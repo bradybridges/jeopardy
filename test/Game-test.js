@@ -14,6 +14,7 @@ describe('Game', () => {
   
   beforeEach(() => {
     game = new Game(data, ['Kayla','Brady','Allison']);
+    game.startGame()
   });
 
   it('should be a function', () => {
@@ -33,12 +34,11 @@ describe('Game', () => {
   });
 
   it('should have a winner', () => {
+    expect(game.roundCounter).to.equal(1);
     game.generateRound()
-    expect(game.roundCounter).to.be(1);
+    expect(game.roundCounter).to.equal(2);
     game.generateRound()
-    expect(game.roundCounter).to.be(2);
-    game.generateRound()
-    expect(game.roundCounter).to.be(3);
+    expect(game.roundCounter).to.equal(3);
     game.generateRound()
     expect(game.winner).to.equal(3)
   });
@@ -53,12 +53,12 @@ describe('Game', () => {
 
   describe('generateRound', () => {
     it('should instantiate the next round depending on the round counter', () => {
+      expect(game.roundCounter).to.equal(1);
       game.generateRound()
-      expect(game.roundCounter).to.be(1);
-      game.generateRound()
-      expect(game.roundCounter).to.be(2);
-      game.generateRound()
-      expect(game.roundCounter).to.be(3);
+      expect(game.roundCounter).to.equal(2);
+      // game.generateRound()
+      console.log('blah', game.clues)
+      // expect(game.roundCounter).to.equal(3);
     });
   });
 
@@ -71,7 +71,6 @@ describe('Game', () => {
 
   describe('startGame', () => {
     it('should call the functions needed to start a game', () => {
-      game.startGame();
       //maybe chai spies to see if other functions fired
 
     });
@@ -79,8 +78,17 @@ describe('Game', () => {
 
   describe('generateCategories', () => {
     it('should pick four unique categories for each round', () => {
-      game.generateCategories();
       expect(game.currentCategories.length).to.equal(4);
+    });
+  });
+
+  describe('generateClues', () => {
+    it('should generate clues based on category and round', () => {
+      game.generateCategories();
+      game.generateClues();
+      game.generateRound();
+      // game.generateClues();
+      expect(game.clues).to.eql([]);
     });
   });
 
