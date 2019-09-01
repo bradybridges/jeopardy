@@ -2,7 +2,7 @@ class Player {
   constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.totalScore = 0;
+    this.score = 0;
     this.wager;
   }
 
@@ -12,7 +12,7 @@ class Player {
 
   checkWager(wager) {
     this.wager = wager;
-    this.totalScore = this.totalScore + parseInt(this.wager);
+    this.score = this.score + parseInt(this.wager);
   }
 }
 

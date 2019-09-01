@@ -3,8 +3,6 @@ const expect = chai.expect;
 import Player from '../src/Player';
 // import data from '../src/data';
 
-
-
 var player
 
 beforeEach(() => {
@@ -28,7 +26,7 @@ describe('Player', () => {
 
   it.skip('should have a name and a score that starts at 0', () => {
     expect(player.name).to.equal(player.name);
-    expect(player.totalScore).to.equal(0);
+    expect(player.score).to.equal(0);
   });
 
   describe('updateScore', () => { 
