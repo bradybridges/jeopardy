@@ -23,6 +23,7 @@ describe('Player', () => {
 
   it.skip('should have an id', () => {
     expect(player.id).to.equal();
+    //id used for DOM and color association
   })
 
   it.skip('should have a name and a score that starts at 0', () => {
@@ -36,15 +37,11 @@ describe('Player', () => {
       expect().to.equal();
     });
   
-    it.skip('should decrement the tot of a wrong answer', () => {
+    it.skip('should decrement the score of a wrong answer', () => {
       expect().to.equal();
     });
 
     it.skip('should add double the point value in round 2', () => {
-      expect().to.equal();
-    });
-
-    it.skip('should subtract double the point value in round 2', () => {
       expect().to.equal();
     });
   });
