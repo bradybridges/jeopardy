@@ -2,16 +2,17 @@ class Player {
   constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.TotalScore = 0;
-    this.currentWager = 0;
+    this.totalScore = 0;
+    this.wager;
   }
 
-  updateScore() {
+  updateScore(pointValue) {
 
   }
 
-  checkWager() {
-
+  checkWager(wager) {
+    this.wager = wager;
+    this.totalScore = this.totalScore + parseInt(this.wager);
   }
 }
 
