@@ -2,6 +2,8 @@ import chai from 'chai';
 import spies from 'chai-spies';
 import Game from '../src/Game';
 import data from '../src/data';
+import Round from '../src/Round';
+import Player from '../src/Player';
 
 const expect = chai.expect;
 chai.use(spies);
@@ -11,7 +13,7 @@ let game;
 describe('Game', () => {
   
   beforeEach(() => {
-    game = new Game(data, 'Kayla','Brady','Allison');
+    game = new Game(data, ['Kayla','Brady','Allison']);
   });
 
   it('should be a function', () => {
@@ -66,6 +68,14 @@ describe('Game', () => {
           expect(game.players[0]).to.be({*})
       });
   });
+
+  describe('startGame', () => {
+      it('should call the functions needed to start a game', () => {
+          game.startGame();
+        //maybe chai spies to see if other functions fired
+
+      })
+  })
   
 
 
