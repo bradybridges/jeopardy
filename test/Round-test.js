@@ -1,22 +1,19 @@
 // import chai from 'chai';
-// import Round from '../src/Round.js'
-// import Game from '../src/Game.js'
+// import Round from '../src/Round'
+// import Game from '../src/Game'
+// import data from '../src/data'
 // const expect = chai.expect;
 
 // describe('Round', () => {
 //   let game;
 //   let round;
 //   beforeEach( () => {
-//     // game = new Game(//parameters);
-//     // round = new Round(//parameters);
+//     game = new Game(data, ['Kayla','Brady','Allison']);
+//     round = new Round();
 //   });
 
 //   it.skip('Should be a function', () => {
-//     //? how to use expect to check class is function
-//   });
-
-//   it.skip('Game property should be instance of Game', () => {
-//     expect(Round.game).to.be.an.instanceof(Game);
+//     expect(Round).to.be.a('function');
 //   });
 
 //   it.skip('Players property should hold 3 instances of Player', () => {

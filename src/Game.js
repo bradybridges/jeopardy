@@ -8,16 +8,24 @@ class Game {
     this.playersList = players;
     this.generatedPlayers;
     this.allCategories = this.data.categories;
-    this.currentCategories = [];
+    this.currentCategories;
     this.clues;
     this.winner;
-    this.roundCounter = 0;
+    this.roundCounter = 1;
     this.currentRound;
+    this.startGame();
+    
   }
 
   startGame() {
     this.generatePlayers();
     this.manipulateCategories();
+    this.generateCategories();
+    this.generateClues();
+    this.generateRound();
+  }
+
+  newRound() {
     this.generateCategories();
     this.generateClues();
     this.generateRound();
@@ -38,8 +46,15 @@ class Game {
   }
 
   generateCategories() {
+    this.currentCategories = [];
+    let tempCategory;
     for (let i = 0; i < 4; i++) {
-      let randomCategory = Math.round(Math.random() * (this.allCategories.length));
+      let randomCategory = Math.floor(Math.random() * (this.allCategories.length -1) + 1);
+      
+      while(this.currentCategories.includes(randomCategory)) {
+        randomCategory = Math.floor(Math.random() * (this.allCategories.length -1) + 1);
+      }
+
       this.currentCategories.push(this.allCategories[randomCategory]);
       this.allCategories.splice(randomCategory, 1);
     }
@@ -47,6 +62,7 @@ class Game {
   }
 
   generateClues() {
+    this.clues = [];
     let currentCategoriesIds = this.currentCategories.map(category => category.id);
     let currentClues = this.data.clues.reduce((acc, clue) => {
       currentCategoriesIds.forEach(id => {
@@ -57,20 +73,53 @@ class Game {
       return acc
     }, []);
     this.clues = currentClues.map(currentClue => {
-      console.log('shit', this.roundCounter);
-      console.log('yo', currentClue.pointValue * this.roundCounter);
-      console.log('line 61:', currentClue);
       return currentClue;
-    })
+    });
   }
 
   generateRound() {
-    if (this.roundCounter <= 2) {
+    if(this.roundCounter === 1) {
+      this.currentRound = new Round(this.generatedPlayers, this.clues);
+    } else if(this.roundCounter === 2) {
+      
+      this.clues = this.clues.map(clue => {
+          return {
+            question: clue.question,
+            pointValue: clue.pointValue * 2,
+            answer: clue.answer,
+            categoryId: clue.categoryId
+          };
+      });
+      this.currentRound = new Round(this.generatedPlayers, this.clues);
+    } else {
       this.roundCounter++;
-      this.currentRound = 'new Round()'
     }
   }
 
+  //Every time a user takes a guess fire this
+  //Would be better if only fired when user makes correct guess
+  //? if(this.round.currentClue.answer === $input.val() FIRE ?)
+  nextRoundHandler() {
+    //this.isRoundOver() &&  <-- Add to if statement below later after making more mock data for each round
+    if(this.roundCounter === 1) {
+      this.incrementRound();
+      this.newRound();
+    } else {
+      this.incrementRound();
+      //this.finalRound() or add to this.generateRound()
+      console.log('Time for round 3');
+    }
+  }
+  //if(this.isRoundOver() && this.roundCounter === 2) <-- Add to else block later
+  //Add else block to handle end of game
+
+  isRoundOver() {
+    return this.currentRound.isClueArrayEmpty() ? true : false;
+  }
+
+  incrementRound() {
+    this.roundCounter++;
+  }
 
 }
 
