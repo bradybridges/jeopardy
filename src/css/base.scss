@@ -1,12 +1,94 @@
+* {
+  box-sizing: border-box;
+}
 /* This is an example of using Sass, otherwise plain CSS works too*/
 $primary-background: pink;
 
 body {
-  background-color: $primary-background;
+  background-color: #000000;
 }
 
 .splash-container {
-  background-image: url("../images/tron-grid-green-gif.gif");
+  // background-image: url('../images/tron-grid-green-gif.gif');
+  background-image: url("../images/tron-esque.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  display: block;
+    .moving-grid {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+        
+    }
+}
+
+.intake-form {
+  z-index: 2;
+  display: inline-block;
+  width: 350px;
+  height:500px;
+  margin-left:32%;
+  background-color: #000000;
+  opacity:0.7;
+  border: 2px solid #166F45;
+}
+
+.intake-form-inputs {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+    label {
+      margin: 8%;
+        input {
+        width: 70%;
+        height:40px;
+        margin: 10px;
+      }
+    }
+    
+.player-one-label {
+  z-index: 1;
+  color: #B519AF;
+}
+
+.player-one-intake {
+  border: 2px solid #B519AF;
+}
+
+.player-two-label {
+  z-index: 1;
+  color: #5BE5FF;
+}
+
+.player-two-intake {
+  border: 2px solid #5BE5FF;
+}
+
+.player-three-label {
+  z-index: 1;
+  color: #13F607;
+}
+
+.player-three-intake {
+  border: 2px solid #13F607;
+}
+
+.start-game-btn {
+  border: 2px solid #166F45;
+  width: 35%;
+  height: 40px;
+  margin: 15px 33%;
+  color: white;
+  background: #166F45;
+  font-size: 20px;
+}
+
+
+
+  
+  
+  
+
+
 }

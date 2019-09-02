@@ -5,24 +5,30 @@
   </head>
   <body>
     <div class="splash-container">
-      <img src="./images/tron-grid-green-gif.gif">
+      <img src="../images/tron-grid-green-gif.gif" class="moving-grid">
       
-      <form>
-        <input>
-        <button> </button>
-        <input>
-        <button></button>
-        <input>
-        <button></button>
+      <form class="intake-form">
+        <div class="intake-form-inputs">
+        <label class ="player-one-label"> Player One 
+        <input class="player-one-intake" placeholder="Player One Name" type="text">
+        </label>
+        <label class ="player-two-label"> Player Two 
+        <input class="player-two-intake" placeholder="Player Two Name" type="text">
+      </label>
+      <label class ="player-three-label"> Player Three 
+        <input class="player-three-intake" placeholder="Player Three Name" type="text">
+      </label>
+        <button class="start-game-btn">Start Game</button>
+      </div>
       </form>
     </div>
 
 
 
 
-    <h1>Jeopardy</h1>
+    <!-- <h1 hidden>Jeopardy</h1> -->
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+    <!-- <img src=. alt="turing logo" height="100px" width="100px"> -->
 
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
