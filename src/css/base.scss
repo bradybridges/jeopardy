@@ -4,3 +4,9 @@ $primary-background: pink;
 body {
   background-color: $primary-background;
 }
+
+.splash-container {
+  background-image: url("../images/tron-grid-green-gif.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

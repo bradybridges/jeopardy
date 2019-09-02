@@ -23,8 +23,8 @@ class Game {
     this.generatedPlayers = this.playersList.map(playerName => new Player(this.playersList.indexOf(playerName) + 1, playerName));
   }
 
+
   generateCategories() {
-        
     this.allCategories = Object.keys(this.data.categories);
     for (let i = 0; i < 4; i++) {
       let randomCategory = Math.round(Math.random() * (this.allCategories.length));
