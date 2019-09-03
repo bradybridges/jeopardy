@@ -5,13 +5,13 @@ class Round {
     this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
     this.currentGuess;
     this.currentAnswer;
-    this.currentClue ;
+    this.currentClue;
     this.guessCount = 0;
   }
 
   setCurrentClue(id, pointValue, question) {
     this.currentClue = this.clues.find(clue => {
-      if(clue.categoryId === id && clue.pointValue === pointValue && clue.question === question) {
+      if (clue.categoryId === id && clue.pointValue === pointValue && clue.question === question) {
         return true;
       } else {
         return false;
@@ -19,10 +19,8 @@ class Round {
     });
   }
        
-
-
   takeGuess(guess) {
-    if(guess === this.currentClue.answer) {
+    if (guess === this.currentClue.answer) {
       this.handleGuess(guess, true);
       this.nextClueHandler(true)
     } else {
@@ -34,7 +32,7 @@ class Round {
   handleGuess(guess, isGoodGuess) {
     const currentPlayerIndex = this.getPlayerIndex();
     const currentClueIndex = this.getClueIndex();
-    if(isGoodGuess) {
+    if (isGoodGuess) {
       this.currentPlayer.score += this.currentClue.pointValue;
       this.clues.splice(currentClueIndex, 1);
     } else {
@@ -46,7 +44,7 @@ class Round {
   }
 
   nextClueHandler(isGoodGuess) {
-    if(this.guessCount === 3 || isGoodGuess) {
+    if (this.guessCount === 3 || isGoodGuess) {
       //later call fn to prompt user to select next clue, take out code below
       const currentClueIndex = this.getClueIndex();
       this.currentClue = this.clues[currentClueIndex + 1];
