@@ -48,8 +48,20 @@ describe('Game', () => {
       expect(game.clues.length).to.not.equal(0); // change to be eql to 16 or 1(for round3)
       expect(game.roundCounter).to.equal(1);
       expect(game.currentRound).to.be.an.instanceof(Round);
-
     });
+  });
+
+  describe('startGame', () => {
+    it('should call the functions needed to start a game', () => {
+      chai.spy.on(game , ['generatePlayers', 'manipulateCategories', 'generateCategories', 'generateClues', 'generateRound'], () => {});
+      game.startGame();
+      expect(game.generatePlayers).to.have.been.called(1);
+      expect(game.manipulateCategories).to.have.been.called(1);
+      expect(game.generateCategories).to.have.been.called(1);
+      expect(game.generateClues).to.have.been.called(1);
+      expect(game.generateRound).to.have.been.called(1);
+    });
+  
   });
 
   describe('nextRoundHandler', () => {
