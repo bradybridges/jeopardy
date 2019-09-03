@@ -1,6 +1,123 @@
+@import 'reset';
+* {
+  box-sizing: border-box;
+}
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+// $primary-background: pink;
 
 body {
-  background-color: $primary-background;
+  background-color: #000000;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.moving-grid {
+  opacity: 0.7
+}
+
+.splash-container {
+  // background-image: url('../images/tron-grid-green-gif.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+    .moving-grid {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+        
+    }
+}
+
+.splash-header {
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  color:#166F45;
+  font-size: 45px;
+  min-width: 350px;
+  margin: 13px 
+}
+
+.title {
+  text-shadow: 4px 0px 4px rgb(238, 238, 238);
+  letter-spacing: 7px;
+}
+
+.intake-form {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  min-width: 350px;
+  height: 70vh;
+  margin: 0px auto 20px;
+}
+
+.intake-form-inputs {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+    label {
+      margin: 1.4%;
+        input {
+        width: 100%;
+        height:40px;
+        margin: 10px 0px;
+        text-align: center;
+      }
+    }
+
+.player-one-label {
+  z-index: 1;
+  color: rgb(181, 25, 129);
+}
+
+.player-one-intake {
+  border: 2px solid rgb(181, 25, 129);;
+}
+
+.player-two-label {
+  z-index: 1;
+  color: #5BE5FF;
+}
+
+.player-two-intake {
+  border: 2px solid #5BE5FF;
+}
+
+.player-three-label {
+  z-index: 1;
+  color: #13F607;
+}
+
+.player-three-intake {
+  border: 2px solid #13F607;
+}
+
+.start-game-btn {
+  z-index: 1;
+  border: 2px solid #0d3f27;
+  width: 75%;
+  height: 45px;
+  margin: 15px 13%; 
+  color: white;
+  background: #166f45;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.round-one-background {
+  background-image: url("../images/tron-esque.jpg");
+  visibility: hidden
+}
+
+
+  
+  
+  
+
+
 }

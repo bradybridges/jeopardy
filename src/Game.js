@@ -35,6 +35,7 @@ class Game {
     this.generatedPlayers = this.playersList.map(playerName => new Player(this.playersList.indexOf(playerName) + 1, playerName));
   }
 
+
   manipulateCategories() {
     let categoryKeys = Object.keys(this.data.categories);
     this.allCategories = categoryKeys.map(currentCategory => {
@@ -83,12 +84,12 @@ class Game {
     } else if(this.roundCounter === 2) {
       
       this.clues = this.clues.map(clue => {
-          return {
-            question: clue.question,
-            pointValue: clue.pointValue * 2,
-            answer: clue.answer,
-            categoryId: clue.categoryId
-          };
+        return {
+          question: clue.question,
+          pointValue: clue.pointValue * 2,
+          answer: clue.answer,
+          categoryId: clue.categoryId
+        };
       });
       this.currentRound = new Round(this.generatedPlayers, this.clues);
     } else {
