@@ -14,7 +14,7 @@ class Game {
     this.roundCounter = 1;
     this.currentRound;
     this.startGame();
-    
+
   }
 
   startGame() {
@@ -58,11 +58,11 @@ class Game {
       this.currentCategories.push(this.allCategories[randomCategory]);
       this.allCategories.splice(randomCategory, 1);
     }
-    return this.currentCategories;
   }
 
   generateClues() {
     this.clues = [];
+    // this.
     let currentCategoriesIds = this.currentCategories.map(category => category.id);
     let currentClues = this.data.clues.reduce((acc, clue) => {
       currentCategoriesIds.forEach(id => {
