@@ -1,19 +1,25 @@
+@import 'reset';
 * {
   box-sizing: border-box;
 }
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+// $primary-background: pink;
 
 body {
   background-color: #000000;
 }
 
+.moving-grid {
+  opacity: 0.7
+}
+
 .splash-container {
   // background-image: url('../images/tron-grid-green-gif.gif');
-  background-image: url("../images/tron-esque.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  display: block;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
     .moving-grid {
       width: 100%;
       height: 100vh;
@@ -22,15 +28,24 @@ body {
     }
 }
 
+.splash-header {
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  color:#166F45;
+  font-size: 45px;
+  min-width: 350px;
+  margin: 13px 
+}
+
 .intake-form {
-  z-index: 2;
-  display: inline-block;
-  width: 350px;
-  height:500px;
-  margin-left:32%;
-  background-color: #000000;
-  opacity:0.7;
-  border: 2px solid #166F45;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  min-width: 350px;
+  height: 70vh;
+  margin: 0px auto 20px;
 }
 
 .intake-form-inputs {
@@ -39,21 +54,22 @@ body {
   flex-direction: column;
   text-align: center;
     label {
-      margin: 8%;
+      margin: 1.4%;
         input {
-        width: 70%;
+        width: 100%;
         height:40px;
-        margin: 10px;
+        margin: 10px 0px;
+        text-align: center;
       }
     }
-    
+
 .player-one-label {
   z-index: 1;
-  color: #B519AF;
+  color: rgb(181, 25, 129);
 }
 
 .player-one-intake {
-  border: 2px solid #B519AF;
+  border: 2px solid rgb(181, 25, 129);;
 }
 
 .player-two-label {
@@ -75,15 +91,20 @@ body {
 }
 
 .start-game-btn {
-  border: 2px solid #166F45;
-  width: 35%;
+  z-index: 1;
+  border: 2px solid #0d3f27;
+  width: 75%;
   height: 40px;
-  margin: 15px 33%;
+  margin: 15px 13%; 
   color: white;
-  background: #166F45;
+  background: #166f45;
   font-size: 20px;
 }
 
+.round-one-background {
+  background-image: url("../images/tron-esque.jpg");
+  visibility: hidden
+}
 
 
   
