@@ -1,5 +1,6 @@
 class Round {
-  constructor(generatedPlayers, clues) {
+  constructor(game, eneratedPlayers, clues) {
+    this.game = game;
     this.players = generatedPlayers;
     this.clues = clues;
     this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
