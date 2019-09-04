@@ -1,6 +1,7 @@
 import data from '../src/data';
 import Round from '../src/Round';
 import Player from '../src/Player';
+import { fileURLToPath } from 'url';
 
 class Game {
   constructor(data, players) {
@@ -21,13 +22,13 @@ class Game {
     this.generatePlayers();
     this.manipulateCategories();
     this.generateCategories();
-    this.generateClues();
+    this.selectClueOptionsForRound();
     this.generateRound();
   }
 
   newRound() {
     this.generateCategories();
-    this.generateClues();
+    this.selectClueOptionsForRound();
     this.generateRound();
   }
 
@@ -48,12 +49,11 @@ class Game {
 
   generateCategories() {
     this.currentCategories = [];
-    let tempCategory;
     for (let i = 0; i < 4; i++) {
-      let randomCategory = Math.floor(Math.random() * (this.allCategories.length -1) + 1);
+      let randomCategory = Math.floor(Math.random() * (this.allCategories.length - 1) + 1);
       
-      while(this.currentCategories.includes(randomCategory)) {
-        randomCategory = Math.floor(Math.random() * (this.allCategories.length -1) + 1);
+      while (this.currentCategories.includes(randomCategory)) {
+        randomCategory = Math.floor(Math.random() * (this.allCategories.length - 1) + 1);
       }
 
       this.currentCategories.push(this.allCategories[randomCategory]);
@@ -61,27 +61,57 @@ class Game {
     }
   }
 
-  generateClues() {
+  selectClueOptionsForRound() {
     this.clues = [];
-    // this.
+
     let currentCategoriesIds = this.currentCategories.map(category => category.id);
-    let currentClues = this.data.clues.reduce((acc, clue) => {
-      currentCategoriesIds.forEach(id => {
-        if (clue.categoryId === id) {
-          acc.push(clue)
+    let fourClueTopics = currentCategoriesIds.map(id => {
+      return this.data.clues.reduce((acc, currentClue) => {
+        if (currentClue.categoryId === id) {
+          acc.push(currentClue)
         }
-      })
-      return acc
-    }, []);
-    this.clues = currentClues.map(currentClue => {
-      return currentClue;
+        return acc
+      }, [])
+    })
+
+    this.arrangeCluesByPoints(fourClueTopics);
+  }
+    
+
+  arrangeCluesByPoints(currentClueTopics) {
+    let pointValues = [100, 200, 300, 400];
+
+    let filteredClueArrays = currentClueTopics.map(currentClueTopic => {
+      return pointValues.map(currentPointValue => {
+        return currentClueTopic.reduce((acc, currentClue) => {
+          if (currentClue.pointValue === currentPointValue) {
+            acc.push(currentClue)
+          }
+          return acc;
+        }, []);
+      });
     });
+    
+    this.generateCluesForRound(filteredClueArrays);
+  }
+    
+  generateCluesForRound(organizedClues) {
+
+    let sixteenClues = organizedClues.reduce((finalClues, currentClues) => {
+      currentClues.forEach(pointValues => {
+        let randomIndex = Math.floor(Math.random() * (pointValues.length - 1));
+        finalClues.push(pointValues[randomIndex])
+      })
+      return finalClues
+    }, [])
+
+    this.clues = sixteenClues;
   }
 
   generateRound() {
-    if(this.roundCounter === 1) {
-      this.currentRound = new Round(this.generatedPlayers, this.clues);
-    } else if(this.roundCounter === 2) {
+    if (this.roundCounter === 1) {
+      this.currentRound = new Round(this, this.generatedPlayers, this.clues);
+    } else if (this.roundCounter === 2) {
       
       this.clues = this.clues.map(clue => {
         return {
@@ -91,7 +121,7 @@ class Game {
           categoryId: clue.categoryId
         };
       });
-      this.currentRound = new Round(this.generatedPlayers, this.clues);
+      this.currentRound = new Round(this, this.generatedPlayers, this.clues);
     } else {
       this.roundCounter++;
     }
@@ -102,11 +132,11 @@ class Game {
   //? if(this.round.currentClue.answer === $input.val() FIRE ?)
   nextRoundHandler() {
     //this.isRoundOver() &&  <-- Add to if statement below later after making more mock data for each round
-    if(this.roundCounter === 1) {
-      this.incrementRound();
+    if (this.roundCounter <= 2) {
+      this.roundCounter++;
       this.newRound();
     } else {
-      this.incrementRound();
+      this.roundCounter++;
       //this.finalRound() or add to this.generateRound()
       console.log('Time for round 3');
     }
@@ -118,9 +148,6 @@ class Game {
     return this.currentRound.isClueArrayEmpty() ? true : false;
   }
 
-  incrementRound() {
-    this.roundCounter++;
-  }
 
 }
 
