@@ -32,8 +32,8 @@ describe('Game', () => {
     expect(game.roundCounter).to.equal(1);
   });
 
-  it.skip('should hold the clues for the current round', () => {
-    expect(game.clues).to.eql([]);
+  it('should hold the clues for the current round', () => {
+    expect(game.clues.length).to.equal(16);
     //need to fix such that round1 - round2 clues.length === 16 and round3 clues.length === 1
   });
 
@@ -53,12 +53,12 @@ describe('Game', () => {
 
   describe('startGame', () => {
     it('should call the functions needed to start a game', () => {
-      chai.spy.on(game , ['generatePlayers', 'manipulateCategories', 'generateCategories', 'generateClues', 'generateRound'], () => {});
+      chai.spy.on(game , ['generatePlayers', 'manipulateCategories', 'generateCategories', 'selectClueOptionsForRound', 'generateRound'], () => {});
       game.startGame();
       expect(game.generatePlayers).to.have.been.called(1);
       expect(game.manipulateCategories).to.have.been.called(1);
       expect(game.generateCategories).to.have.been.called(1);
-      expect(game.generateClues).to.have.been.called(1);
+      expect(game.selectClueOptionsForRound).to.have.been.called(1);
       expect(game.generateRound).to.have.been.called(1);
     });
   
@@ -89,10 +89,9 @@ describe('Game', () => {
   });
 
   describe('generateClues', () => {
-    it.skip('should generate clues based on category and round', () => {
-      expect(game.clues).to.eql('hi');
+    it('should generate clues based on category and round', () => {
+      expect(game.clues.length).to.equal(16);
     });
-    //need to fix such that round1 - round2 clues.length === 16 and round3 clues.length === 1
   });
 
 

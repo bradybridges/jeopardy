@@ -12,7 +12,7 @@ describe('Round', () => {
   let round;
   beforeEach( () => {
     game = new Game(data, ['Kayla','Brady','Allison']);
-    round = new Round(game.generatedPlayers, data2);
+    round = new Round(game, game.generatedPlayers, data2);
     round.setCurrentClue(10, 100, 'Scorecard Report\" & \"Peter Jacobsen Plugged In\" are seen on the sports channel devoted to this');
   });
 

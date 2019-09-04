@@ -1,57 +1,44 @@
-// import chai from 'chai';
-// const expect = chai.expect;
-// import Player from '../src/Player';
-// // import data from '../src/data';
+import chai from 'chai';
+const expect = chai.expect;
+import Player from '../src/Player';
 
-// var player
+var player;
 
-// beforeEach(() => {
-//   player = new Player();
-// });
+beforeEach(() => {
+  player = new Player(1, 'Allison');
+});
 
-// describe('Player', () => {
+describe('Player', () => {
 
-//   it('should be a function', () => {
-//     expect(Player).to.be.a('function');
-//   });
+  it('should be a function', () => {
+    expect(Player).to.be.a('function');
+  });
 
-//   it('should be an instance of the player class', () => {
-//     expect(player).to.be.an.instanceof(Player);
-//   });
+  it('should be an instance of the player class', () => {
+    expect(player).to.be.an.instanceof(Player);
+  });
 
-//   it.skip('should have an id', () => {
-//     expect(player.id).to.equal();
-//     //id used for DOM and color association
-//   })
+  it('should have an id', () => {
+    expect(player.id).to.equal(1);
+  })
 
-//   it.skip('should have a name and a score that starts at 0', () => {
-//     expect(player.name).to.equal(player.name);
-//     expect(player.score).to.equal(0);
-//   });
+  it('should have a name and a score that starts at 0', () => {
+    expect(player.name).to.equal('Allison');
+    expect(player.score).to.equal(0);
+  });
 
-//   describe('updateScore', () => { 
+  describe('incrementScore', () => {
+    it('Should increment score', () => {
+      player.incrementScore(100);
+      expect(player.score).to.equal(100);
+    })
+  });
 
-//     it.skip('should increment the score of a correct answer', () => {
-//       expect().to.equal();
-//     });
-  
-//     it.skip('should decrement the score of a wrong answer', () => {
-//       expect().to.equal();
-//     });
+  describe('decrementScore', () => {
+    it('Should decrement score', () => {
+      player.decrementScore(100);
+      expect(player.score).to.equal(-100);
+    })
+  })
 
-//     it.skip('should add double the point value in round 2', () => {
-//       expect().to.equal();
-//     });
-//   });
-    
-//   it('should accept a player wager for the daily double', () => {
-//     player.checkWager(100);
-//     expect(player.wager).to.equal(100)
-//   });
-
-//   it('should accept a player wager', () => {
-//     player.checkWager(100)  
-//     expect(player.wager).to.equal(100)
-//   });
-
-// });
+});
