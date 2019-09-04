@@ -1,13 +1,19 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+
+import Game from '../Game';
+import DOMUpdates from '../DOMUpdates.js';
+import Round from '..Round'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
+  .then(response => response.json())
+  .then(data => data)
+  .catch(error => console.log(error));
+
+let game
+let round
+let player
+
