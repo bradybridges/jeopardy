@@ -71,12 +71,13 @@ describe('Round', () => {
   });
 
   describe('checkClueArray', () => {
-    it('Should be able to determine when clues array is empty', () => {
+    it('Should be able to determine when clues array is empty and move to next round', () => {
       round.clues = [data2[0]];
       round.setCurrentClue(10, 200, 'One of the most popular shows on the Food Network is "The Essence of" him');
       expect(round.isClueArrayEmpty()).to.equal(false);
       round.takeGuess('Emeril');
       expect(round.isClueArrayEmpty()).to.equal(true);
+      expect(round.game.roundCounter).to.equal(2);
     });
   });
 
