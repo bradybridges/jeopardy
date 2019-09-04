@@ -45,11 +45,13 @@ class Round {
   }
 
   nextClueHandler(isGoodGuess) {
-    if (this.guessCount === 3 || isGoodGuess) {
+    if ((this.guessCount === 3 || isGoodGuess) && !this.isClueArrayEmpty()) {
       //later call fn to prompt user to select next clue, take out code below
       const currentClueIndex = this.getClueIndex();
       this.currentClue = this.clues[currentClueIndex + 1];
       this.guessCount = 0;
+    } else {
+      this.game.nextRoundHandler();
     }
   }
 
