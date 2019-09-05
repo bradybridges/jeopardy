@@ -1,5 +1,9 @@
 import $ from 'jquery';
 
-const domUpdates = {};
+const domUpdates = {
+
+
+
+};
 
 export default domUpdates;
