@@ -3,17 +3,20 @@ import './css/base.scss';
 
 import Game from './Game';
 import DOMUpdate from './DOMUpdate';
-import Round from './Round'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+import './images/tron-grid-green-gif.gif'
 import './images/turing-logo.png'
 
 fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .then(response => response.json())
-  .then(data => data)
+  .then(data => data.data)
   .catch(error => console.log(error));
 
 let game;
-let round;
-let player;
+
+$(function() {
+
+
+    
+});
 
