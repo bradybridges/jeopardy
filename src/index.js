@@ -28,3 +28,11 @@ $(document).ready(function() {
   
 })
 
+$('.start-game-btn').click(function() {
+    let player1 = $('.player-one-intake').val();
+    let player2 = $('.player-two-intake').val();
+    let player3 = $('.player-three-intake').val();
+    
+    game = New Game(data, [plauer1, player2, player3])
+})
+
