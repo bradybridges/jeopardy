@@ -1,4 +1,5 @@
 @import 'reset';
+@import 'variables';
 * {
   box-sizing: border-box;
 }
@@ -15,7 +16,6 @@ body {
 }
 
 .splash-container {
-  // background-image: url('../images/tron-grid-green-gif.gif');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -71,29 +71,29 @@ body {
 
 .player-one-label {
   z-index: 1;
-  color: rgb(181, 25, 129);
+  color: $player-one-color;
 }
 
 .player-one-intake {
-  border: 2px solid rgb(181, 25, 129);;
+  border: 2px solid $player-one-color;
 }
 
 .player-two-label {
   z-index: 1;
-  color: #5BE5FF;
+  color: $player-two-color;
 }
 
 .player-two-intake {
-  border: 2px solid #5BE5FF;
+  border: 2px solid $player-two-color;
 }
 
 .player-three-label {
   z-index: 1;
-  color: #13F607;
+  color: $player-three-color;
 }
 
 .player-three-intake {
-  border: 2px solid #13F607;
+  border: 2px solid $player-three-color;
 }
 
 .start-game-btn {
