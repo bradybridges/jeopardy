@@ -15,7 +15,6 @@ class Game {
     this.roundCounter = 1;
     this.currentRound;
     this.startGame();
-
   }
 
   startGame() {
