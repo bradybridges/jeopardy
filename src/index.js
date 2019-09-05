@@ -6,14 +6,14 @@ import './images/splash.gif';
 
 import Game from './Game';
 
-// import domUpdates from './domUpdates.js'
+import domUpdates from './domUpdates.js'
 
 let game;
 
-
-
-
-console.log('This is the JavaScript entry file - your code begins here.');
+fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
+  .then(response => response.json())
+  .then(data => data.data)
+  .catch(error => console.log(error));
 
 
 $(document).ready(function() {
@@ -25,7 +25,6 @@ $(document).ready(function() {
     }
   })
 
-
 //   $('.start-game-btn').click(function() {
 //     let player1 = $('.player-one-intake').val();
 //     let player2 = $('.player-two-intake').val();
@@ -35,6 +34,4 @@ $(document).ready(function() {
 //   })
   
 })
-
-
 

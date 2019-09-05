@@ -1,5 +1,5 @@
 class Round {
-  constructor(game, eneratedPlayers, clues) {
+  constructor(game, generatedPlayers, clues) {
     this.game = game;
     this.players = generatedPlayers;
     this.clues = clues;
@@ -45,12 +45,13 @@ class Round {
   }
 
   nextClueHandler(isGoodGuess) {
-    if ((this.guessCount === 3 || isGoodGuess) && !this.isClueArrayEmpty()) {
+    if (this.guessCount === 3 || isGoodGuess) {
       //later call fn to prompt user to select next clue, take out code below
       const currentClueIndex = this.getClueIndex();
       this.currentClue = this.clues[currentClueIndex + 1];
       this.guessCount = 0;
-    } else {
+    }
+    if(this.isClueArrayEmpty()) {
       this.game.nextRoundHandler();
     }
   }

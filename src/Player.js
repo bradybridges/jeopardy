@@ -3,17 +3,16 @@ class Player {
     this.id = id;
     this.name = name;
     this.score = 0;
-    this.wager;
   }
 
-  updateScore(pointValue) {
-
+  decrementScore(pointValue) {
+    this.score -= pointValue;
   }
 
-  checkWager(wager) {
-    this.wager = wager;
-    this.score = this.score + parseInt(this.wager);
+  incrementScore(pointValue) {
+    this.score += pointValue;
   }
+
 }
 
 
