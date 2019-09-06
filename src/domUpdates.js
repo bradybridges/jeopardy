@@ -10,9 +10,8 @@ const domUpdates = {
   populateBoard(categories, clues) {
 
     for (let i = 0; i < 4; i++) {
-      // let bob = `.grid-container .grid-item:nth-child(${i})`
-      let kim = `.grid-item:nth-child(${i + 1})`;
-      $(kim).text(categories[i].name);
+      let gridItemToTarget = `.grid-item:nth-child(${i + 1})`;
+      $(gridItemToTarget).text(categories[i].name);
     }
     
     let sortedClues = clues.sort((a,b) => {
@@ -21,9 +20,8 @@ const domUpdates = {
     console.log("SortedClues", sortedClues)
 
     for (let i = 0; i < 16; i++) {
-      // let bob = `.grid-container .grid-item:nth-child(${i})`
-      let kimbo = `.grid-item:nth-child(${i + 5})`;
-      $(kimbo).text(sortedClues[i].pointValue);
+      let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
+      $(gridItemToTarget).text(sortedClues[i].pointValue);
     }
   }
  
