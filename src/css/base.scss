@@ -12,7 +12,7 @@ body {
 }
 
 .moving-grid {
-  opacity: 0.7
+  opacity: 0.7;
 }
 
 .splash-container {
@@ -37,7 +37,7 @@ body {
   color:#166F45;
   font-size: 45px;
   min-width: 350px;
-  margin: 13px 
+  margin: 13px;
 }
 
 .title {
@@ -68,7 +68,7 @@ body {
         text-align: center;
       }
     }
-
+  }
 .player-one-label {
   z-index: 1;
   color: $player-one-color;
@@ -111,20 +111,32 @@ body {
 
 .round-one {
   background-image: url("../images/round-one.jpg");
-  visibility: hidden
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   min-height: 50vh;
+  min-width: 50vw;
+  color: white;
+  border: 2px solid white;
+  position: absolute;
+  align-items: center;
+  text-align: center;
 }
 
+.round-one-foreground {
+  z-index: 1;
+}
 
-  
-  
-  
-
-
+.grid-item {
+  justify-self: center;
+  align-items: center;
+  border: solid 2px white;
+  min-width: 100%;
+  min-height: 100%;
 }
