@@ -25,8 +25,8 @@ $(document).ready(function() {
     }
   })
   
-  $('.start-game-btn').click(function(e) {
-      e.preventDefault()
+  $('.start-game-btn').click( (e) => {
+    e.preventDefault()
     let player1 = $('.player-one-intake').val();
     let player2 = $('.player-two-intake').val();
     let player3 = $('.player-three-intake').val();
@@ -37,6 +37,12 @@ $(document).ready(function() {
     domUpdates.transitionToFirstRound();
     domUpdates.populateBoard(game.currentCategories, game.clues)
   })
+
+  // $('.grid-item').click( (e) => {
+  //   e.preventDefault()
+  //   if (!e.target.classList.includes('category')){
+  //   }
+  // })
   
 })
 

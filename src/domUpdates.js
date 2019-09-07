@@ -13,15 +13,13 @@ const domUpdates = {
       let gridItemToTarget = `.grid-item:nth-child(${i + 1})`;
       $(gridItemToTarget).text(categories[i].name);
     }
-    
-    let sortedClues = clues.sort((a,b) => {
-      return a.pointValue - b.pointValue;
-    });
-    console.log("SortedClues", sortedClues)
 
     for (let i = 0; i < 16; i++) {
+      //possibly create grid items here
+      //grid would by dynamic for each ground, but needed to be cleared
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
-      $(gridItemToTarget).text(sortedClues[i]).pointValue;
+      $(gridItemToTarget).attr('data-index', i)
+      $(gridItemToTarget).text(clues[i].pointValue);
     }
   }
  

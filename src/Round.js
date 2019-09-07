@@ -38,14 +38,8 @@ class Round {
     return Math.floor(Math.random() * 15);
   }
 
-  setCurrentClue(id, pointValue, question) {
-    this.currentClue = this.clues.find(clue => {
-      if (clue.categoryId === id && clue.pointValue === pointValue && clue.question === question) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+  setCurrentClue(index) {
+    this.currentClue = this.clues[index];
   }
        
   takeGuess(guess) {

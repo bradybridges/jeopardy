@@ -102,8 +102,9 @@ class Game {
         finalClues.push(pointValues[randomIndex])
       })
       return finalClues
-    }, [])
-
+    }, []).sort((a,b) => {
+      return a.pointValue - b.pointValue
+    });
     this.clues = sixteenClues;
   }
 
