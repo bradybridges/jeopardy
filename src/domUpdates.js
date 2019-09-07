@@ -10,12 +10,21 @@ const domUpdates = {
   populateBoard(categories, clues) {
 
     for (let i = 0; i < 4; i++) {
-      $('.grid-item:nth-child(1)').text(categories[i].name);
-      
+      let gridItemToTarget = `.grid-item:nth-child(${i + 1})`;
+      $(gridItemToTarget).text(categories[i].name);
     }
     
-  }
+    let sortedClues = clues.sort((a,b) => {
+      return a.pointValue - b.pointValue;
+    });
+    console.log("SortedClues", sortedClues)
 
+    for (let i = 0; i < 16; i++) {
+      let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
+      $(gridItemToTarget).text(sortedClues[i]).pointValue;
+    }
+  }
+ 
 };
 
 export default domUpdates;
