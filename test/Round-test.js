@@ -27,9 +27,11 @@ describe('Round', () => {
     expect(round.players[2]).to.be.an.instanceof(Player);
   });
 
-  describe('dailyDouble', () => {
-    //daily double tests
-  });
+  // describe('dailyDouble', () => {
+  //   it('should have one daily double on first round', () => {
+  //     expect(round.findDailyDoubles().length).to.equal(1);
+  //   });
+  // });
 
   describe('changePlayer', () => {
     it('Should increment currentPlayer', () => {
