@@ -21,16 +21,10 @@ const domUpdates = {
 
     for (let i = 0; i < 16; i++) {
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
-      $(gridItemToTarget).text(sortedClues[i].pointValue);
+      $(gridItemToTarget).text(sortedClues[i]).pointValue;
     }
   }
  
 };
 
 export default domUpdates;
-
-// for (let i = 0; i < 4; i++) {
-//     let bob = `.grid-container .grid-item:nth-child(${i})`
-//   $(bob).text(categories[i - 1].name);
-  
-// }
