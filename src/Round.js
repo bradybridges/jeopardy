@@ -8,6 +8,34 @@ class Round {
     this.currentAnswer;
     this.currentClue;
     this.guessCount = 0;
+    this.dailyDouble();
+  }
+
+  dailyDouble() {
+    if(this.game.roundCounter === 1) {
+      this.generateDailyDoubles(1);
+    } else if(this.game.roundCounter === 2) {
+      this.generateDailyDoubles(2);
+    }
+  }
+
+  generateDailyDoubles(numToCreate) {
+    if(numToCreate === 1) {
+      let dailyDoubleIndex = this.returnDailyDoubleIndex();
+      this.clues[dailyDoubleIndex].dailyDouble = true;
+    } else {
+      let firstDailyDoubleIndex = this.returnDailyDoubleIndex();
+      let secondDailyDoubleIndex = this.returnDailyDoubleIndex();
+      while(firstDailyDoubleIndex === secondDailyDoubleIndex) {
+        secondDailyDoubleIndex = this.returnDailyDoubleIndex();
+      }
+      this.clues[firstDailyDoubleIndex].dailyDouble = true;
+      this.clues[secondDailyDoubleIndex].dailyDouble = true;
+    }
+  }
+
+  returnDailyDoubleIndex() {
+    return Math.floor(Math.random() * 15);
   }
 
   setCurrentClue(id, pointValue, question) {
@@ -71,6 +99,10 @@ class Round {
 
   isClueArrayEmpty() {
     return this.clues.length === 0 ? true : false;
+  }
+
+  findDailyDoubles() {
+    return this.clues.filter(clue => clue.dailyDouble === true);
   }
 
 }
