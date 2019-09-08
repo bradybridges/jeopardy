@@ -5,7 +5,7 @@ class Round {
     this.clues = clues;
     this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
     this.currentGuess;
-    this.currentAnswer;
+    // this.currentAnswer;
     this.currentClue;
     this.guessCount = 0;
     this.dailyDouble();
@@ -40,6 +40,8 @@ class Round {
 
   setCurrentClue(index) {
     this.currentClue = this.clues[index];
+    console.log("currentClue", this.currentClue)
+    console.log("currentAnswer", this.currentClue.answer)
   }
        
   takeGuess(guess) {

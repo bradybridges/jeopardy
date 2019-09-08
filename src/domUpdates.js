@@ -22,6 +22,8 @@ const domUpdates = {
   },
 
   populateClueInteraction(question, game) {
+    $('.user-input').empty();
+    console.log("inDOM", $('.user-input').val())
     $(document.body).append(`<div class="clue-info">
     <p class="clue-question">${question}</p>
     <input class="user-input" type="text" placeholder="Enter Guess">
@@ -34,15 +36,24 @@ const domUpdates = {
     $('.user-guess-btn').click( (e) => {
       e.preventDefault()
       console.log("doomdidoomdidoooom")
+      console.log("Person After True", game.currentRound.currentPlayer.id)
+      console.log("Score Before", game.currentRound.currentPlayer.score)
       let guess = $('.user-input').val().toLowerCase();
+      console.log("Guess", guess)
+      // console.log("Answer", game.currentRound.currentAnswer)
       let result = game.currentRound.takeGuess(guess);
       console.log("RESULT", result)
       if (result === true) {
         this.correctGuess();
         console.log("correct")
+        console.log("Person After Correct Guess", game.currentRound.currentPlayer.id)
+        console.log("Score After True", game.currentRound.currentPlayer.score)
+        // console.log("Score After True", game.currentRound.currentPlayer.score)
       } else {
         this.wrongGuess();
         console.log("incorrect")
+        console.log("Person After False", game.currentRound.currentPlayer);
+        console.log("Score After False", game.currentRound.currentPlayer.score);
       }
     })
   },
@@ -54,16 +65,16 @@ const domUpdates = {
     <img src="../images/correct-guess.gif" class="correct-guess">
     <img src="../images/splash.gif" class="moving-grid">
     </div>`);
-    $('.clue-info').fadeOut(10000);
+    $('.clue-info').fadeOut(3000);
   },
 
   wrongGuess() {
     $(document.body).append(`<div class="clue-info">
     <p class="correct-gif-text">Wrong!</p>
-    <img src="../images/wrong-guess.gif" class="moving-grid">
     <img src="../images/splash.gif" class="moving-grid">
+    <img src="../images/host.gif">
     </div> `);
-    $('.clue-info').fadeOut(10000);
+    $('.clue-info').fadeOut(3000);
   }
 
 
