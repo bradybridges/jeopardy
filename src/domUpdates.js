@@ -39,8 +39,8 @@ const domUpdates = {
       e.preventDefault()
 
   
-      console.log("Person After True:", game.currentRound.currentPlayer.id)
-      console.log("Score Before:", game.currentRound.currentPlayer.score)
+      console.log("current Player:", game.currentRound.currentPlayer.id)
+      // console.log("Score Before:", game.currentRound.currentPlayer.score)
 
       let guess = $('.user-input').val().toLowerCase();
 
@@ -113,10 +113,9 @@ const domUpdates = {
   },
 
   updateScore(ofWhose) {
-    if (ofWhose.id === 1) {
-      $('.PP1-score').text('');
-      $('.PP1-score').text(ofWhose.score);
-    }
+    $(`.PP${ofWhose.id}-score`).text('');
+    $(`.PP${ofWhose.id}-score`).text(ofWhose.score);
+ 
   }
 
 
