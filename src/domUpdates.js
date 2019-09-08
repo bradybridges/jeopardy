@@ -27,17 +27,46 @@ const domUpdates = {
     <input class="user-input" type="text" placeholder="Enter Guess">
     <button class="user-guess-btn">Submit Guess</button>
   </div>`);
-    this.popupEvent(game)
+    this.checkGuessHelper(game)
   },
 
-  popupEvent(game) {
+  checkGuessHelper(game) {
     $('.user-guess-btn').click( (e) => {
       e.preventDefault()
+      console.log("doomdidoomdidoooom")
       let guess = $('.user-input').val().toLowerCase();
-      game.currentRound.takeGuess(guess)
-
+      let result = game.currentRound.takeGuess(guess);
+      console.log("RESULT", result)
+      if (result === true) {
+        this.correctGuess();
+        console.log("correct")
+      } else {
+        this.wrongGuess();
+        console.log("incorrect")
+      }
     })
   },
+
+  correctGuess() {
+    $(document.body).append(`
+    <div class="clue-info">
+    <p class="correct-gif-text">Correct!</p>
+    <img src="../images/correct-guess.gif" class="correct-guess">
+    <img src="../images/splash.gif" class="moving-grid">
+    </div>`);
+    $('.clue-info').fadeOut(10000);
+  },
+
+  wrongGuess() {
+    $(document.body).append(`<div class="clue-info">
+    <p class="correct-gif-text">Wrong!</p>
+    <img src="../images/wrong-guess.gif" class="moving-grid">
+    <img src="../images/splash.gif" class="moving-grid">
+    </div> `);
+    $('.clue-info').fadeOut(10000);
+  }
+
+
  
 };
 

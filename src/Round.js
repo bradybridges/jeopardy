@@ -12,21 +12,21 @@ class Round {
   }
 
   dailyDouble() {
-    if(this.game.roundCounter === 1) {
+    if (this.game.roundCounter === 1) {
       this.generateDailyDoubles(1);
-    } else if(this.game.roundCounter === 2) {
+    } else if (this.game.roundCounter === 2) {
       this.generateDailyDoubles(2);
     }
   }
 
   generateDailyDoubles(numToCreate) {
-    if(numToCreate === 1) {
+    if (numToCreate === 1) {
       let dailyDoubleIndex = this.returnDailyDoubleIndex();
       this.clues[dailyDoubleIndex].dailyDouble = true;
     } else {
       let firstDailyDoubleIndex = this.returnDailyDoubleIndex();
       let secondDailyDoubleIndex = this.returnDailyDoubleIndex();
-      while(firstDailyDoubleIndex === secondDailyDoubleIndex) {
+      while (firstDailyDoubleIndex === secondDailyDoubleIndex) {
         secondDailyDoubleIndex = this.returnDailyDoubleIndex();
       }
       this.clues[firstDailyDoubleIndex].dailyDouble = true;
@@ -44,33 +44,31 @@ class Round {
        
   takeGuess(guess) {
     if (guess === this.currentClue.answer.toLowerCase()) {
-      this.handleGuess(guess, true);
-      this.nextClueHandler(true)
+      this.handleGuess(true);
+      this.nextRoundHelper();
+      return true;
     } else {
-      this.handleGuess(guess, false);
-      this.nextClueHandler(false);
+      this.handleGuess(false);
+      this.nextRoundHelper();
+      return false;
     }
   }
 
-  handleGuess(guess, isGoodGuess) {
+  handleGuess(isGoodGuess) {
     const currentPlayerIndex = this.getPlayerIndex();
     const currentClueIndex = this.getClueIndex();
     if (isGoodGuess) {
-      this.currentPlayer.score += this.currentClue.pointValue;
+      this.currentPlayer.incrementScore(this.currentClue.pointValue);
       this.clues.splice(currentClueIndex, 1);
     } else {
-      this.guessCount++;
-      this.currentPlayer.score -= this.currentClue.pointValue;
+      this.currentPlayer.decrementScore(this.currentClue.pointValue);
       this.players[currentPlayerIndex] = this.currentPlayer;
       this.changePlayer();
     }
   }
 
-  nextClueHandler(isGoodGuess) {
-    if (this.guessCount === 3 || isGoodGuess) {
-      this.guessCount = 0;
-    }
-    if(this.isClueArrayEmpty()) {
+  nextRoundHelper() {
+    if (this.isClueArrayEmpty()) {
       this.game.nextRoundHandler();
     }
   }
