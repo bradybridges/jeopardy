@@ -188,14 +188,14 @@ body {
 .player-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 62%;
+  margin-top: 40%;
   width: 75%;
 }
 
 .podium {
   align-items: center;
-  background: yellow;
-  border: 1px solid black;
+  background: #20094A;
+  border: 5px solid $player-two-color;
   display: flex;
   flex-direction: column;
   height: 157px;
@@ -209,7 +209,12 @@ body {
   border: 1px solid black;
   background: white;
   height: 30px;
-  text-align: center;
   width: 60%;
+  border: 1px solid black;
+  background: white;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 

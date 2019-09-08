@@ -5,28 +5,28 @@ class Round {
     this.clues = clues;
     this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
     this.currentGuess;
-    this.currentAnswer;
+    // this.currentAnswer;
     this.currentClue;
     this.guessCount = 0;
     this.dailyDouble();
   }
 
   dailyDouble() {
-    if(this.game.roundCounter === 1) {
+    if (this.game.roundCounter === 1) {
       this.generateDailyDoubles(1);
-    } else if(this.game.roundCounter === 2) {
+    } else if (this.game.roundCounter === 2) {
       this.generateDailyDoubles(2);
     }
   }
 
   generateDailyDoubles(numToCreate) {
-    if(numToCreate === 1) {
+    if (numToCreate === 1) {
       let dailyDoubleIndex = this.returnDailyDoubleIndex();
       this.clues[dailyDoubleIndex].dailyDouble = true;
     } else {
       let firstDailyDoubleIndex = this.returnDailyDoubleIndex();
       let secondDailyDoubleIndex = this.returnDailyDoubleIndex();
-      while(firstDailyDoubleIndex === secondDailyDoubleIndex) {
+      while (firstDailyDoubleIndex === secondDailyDoubleIndex) {
         secondDailyDoubleIndex = this.returnDailyDoubleIndex();
       }
       this.clues[firstDailyDoubleIndex].dailyDouble = true;
@@ -38,39 +38,37 @@ class Round {
     return Math.floor(Math.random() * 15);
   }
 
-  setCurrentClue(index) {
-    this.currentClue = this.clues[index];
+  setCurrentClue(answer) {
+    // this.currentClue = this.clues[index];
+    this.currentClue = this.clues.find(clue => clue.answer === answer)
+    console.log("currentClue", this.currentClue)
+    console.log("currentAnswer", this.currentClue.answer)
   }
        
   takeGuess(guess) {
     if (guess === this.currentClue.answer.toLowerCase()) {
-      this.handleGuess(guess, true);
-      this.nextClueHandler(true)
+      this.handleGuess(true);
+      return true;
     } else {
-      this.handleGuess(guess, false);
-      this.nextClueHandler(false);
+      this.handleGuess(false);
+      return false;
     }
   }
 
-  handleGuess(guess, isGoodGuess) {
-    const currentPlayerIndex = this.getPlayerIndex();
+  handleGuess(isGoodGuess) {
     const currentClueIndex = this.getClueIndex();
     if (isGoodGuess) {
-      this.currentPlayer.score += this.currentClue.pointValue;
-      this.clues.splice(currentClueIndex, 1);
+      this.currentPlayer.incrementScore(this.currentClue.pointValue);
     } else {
-      this.guessCount++;
-      this.currentPlayer.score -= this.currentClue.pointValue;
-      this.players[currentPlayerIndex] = this.currentPlayer;
-      this.changePlayer();
+      this.currentPlayer.decrementScore(this.currentClue.pointValue);
     }
+    this.changePlayer();
+    this.clues.splice(currentClueIndex, 1);
+    this.nextRoundHelper();
   }
 
-  nextClueHandler(isGoodGuess) {
-    if (this.guessCount === 3 || isGoodGuess) {
-      this.guessCount = 0;
-    }
-    if(this.isClueArrayEmpty()) {
+  nextRoundHelper() {
+    if (this.isClueArrayEmpty()) {
       this.game.nextRoundHandler();
     }
   }

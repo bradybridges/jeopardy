@@ -33,6 +33,9 @@ $(document).ready(function() {
     
     game = new Game(data, [player1, player2, player3])
 
+    domUpdates.appendPlayers(game);
+
+
     domUpdates.transitionToFirstRound();
     domUpdates.populateBoard(game.currentCategories, game.clues)
     domUpdates.populatePlayerData(game);
@@ -42,8 +45,11 @@ $(document).ready(function() {
     e.preventDefault()
     if (!e.currentTarget.classList.contains('category')) {
       let cardIndex = e.currentTarget.dataset.index
-      game.currentRound.setCurrentClue(cardIndex);
+      let cardAnswer = e.currentTarget.dataset.answer
+      game.currentRound.setCurrentClue(cardAnswer);
       domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
+      $(e.currentTarget).wrap("<strike>");
+      $(e.currentTarget).off();
     }
   });
 
