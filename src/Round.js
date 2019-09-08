@@ -54,7 +54,7 @@ class Round {
   }
 
   takeDailyDoubleGuess(guess, wager) {
-    if(guess === this.currentClue.answer.toLowerCase()) {
+    if (guess === this.currentClue.answer.toLowerCase()) {
       this.handleDailyDoubleGuess(true, wager);
       return true;
     } else {
@@ -72,7 +72,7 @@ class Round {
     }
     this.changePlayer();
     this.clues.splice(currentClueIndex, 1);
-    this.nextRoundHelper();
+    // this.nextRoundHelper();
   }
 
   handleDailyDoubleGuess(isGoodGuess, wager) {
@@ -84,7 +84,7 @@ class Round {
     }
     this.changePlayer();
     this.clues.splice(currentClueIndex, 1);
-    this.nextRoundHelper();
+    // this.nextRoundHelper();
   }
 
   nextRoundHelper() {
@@ -115,10 +115,8 @@ class Round {
   }
 
   isGoodWager(wager) {
-    console.log("WAGER:", wager)
     let min = 5;
     let max = this.clues[this.clues.length - 1].pointValue;
-    console.log("MAX", max)
     if (wager >= min && wager <= max) {
       return true;
     } else {

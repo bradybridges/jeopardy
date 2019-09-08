@@ -4,7 +4,7 @@ const domUpdates = {
 
   transitionToFirstRound() {
     $('.splash-container').fadeOut(2000);
-    $('.round-one').fadeIn(6000).prop('hidden', false)
+    $('.round-one').fadeIn(6000);
   },
 
   populateBoard(categories, clues) {
@@ -16,7 +16,7 @@ const domUpdates = {
 
     for (let i = 0; i < 16; i++) {
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
-      $(gridItemToTarget).attr('data-index', i)
+      // $(gridItemToTarget).attr('data-index', i)
       $(gridItemToTarget).attr('data-answer', clues[i].answer)
       $(gridItemToTarget).text(clues[i].pointValue);
     }
@@ -60,7 +60,6 @@ const domUpdates = {
       console.log("Guess:", guess)
       let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeGuess(guess);
-      this.updateScore(playerGuessing);
       console.log("player guessing:", playerGuessing)
       if (result === true) {
         this.correctGuess();
@@ -69,6 +68,7 @@ const domUpdates = {
         this.wrongGuess();
         console.log("incorrect");
       }
+      this.updateScore(playerGuessing, game);
     })
   },
   checkDailyDoubleWagerHelper(game) {
@@ -93,7 +93,6 @@ const domUpdates = {
       let wager = parseInt($('.wager-input').val());
       let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeDailyDoubleGuess(guess, wager);
-      this.updateScore(playerGuessing);
       console.log("player guessing:", playerGuessing)
       if (result === true) {
         this.correctGuess();
@@ -102,6 +101,7 @@ const domUpdates = {
         this.wrongGuess();
         console.log("incorrect");
       }
+      this.updateScore(playerGuessing, game);
     })
   },
 
@@ -150,9 +150,11 @@ const domUpdates = {
     $('.PP3-score').text(player1.score);
   },
 
-  updateScore(ofWhose) {
+  updateScore(ofWhose, game) {
     $(`.PP${ofWhose.id}-score`).text('');
     $(`.PP${ofWhose.id}-score`).text(ofWhose.score);
+    console.log("UPDATED SCORE line 156")
+    this.isRoundOver(game);
   },
 
   correctWager() {
@@ -161,7 +163,28 @@ const domUpdates = {
 
   incorrectWager() {
     alert("Wager Denied. Wage on.")
-  }
+  },
+
+  isRoundOver(game) {
+    console.log("Before round is over check", game.currentRound.isClueArrayEmpty())
+    if (game.currentRound.isClueArrayEmpty()) {
+      console.log("INSIDE IF LINE 169")
+      game.currentRound.nextRoundHelper();
+      this.handleNextRoundGameBoard(game);
+
+    }
+  },
+
+  handleNextRoundGameBoard(game) {
+    if(game.roundCounter = 2) {
+      $('.round-one').remove();
+      $('.round-two').fadeIn(6000);
+    }
+    console.log("About to pop board yo")
+    console.log("clues before next round", game.clues)
+    this.populateBoard(game.currentCategories, game.clues);
+  },
+
 
 
 };
