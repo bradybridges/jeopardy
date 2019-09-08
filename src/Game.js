@@ -62,7 +62,6 @@ class Game {
 
   selectClueOptionsForRound() {
     this.clues = [];
-    debugger;
     let currentCategoriesIds = this.currentCategories.map(category => category.id);
     let fourClueTopics = currentCategoriesIds.map(id => {
       return this.data.clues.reduce((acc, currentClue) => {

@@ -56,9 +56,6 @@ const domUpdates = {
 
         console.log("correct")
 
-        // console.log("Person After Correct Guess:", game.currentRound.currentPlayer.id)
-        // console.log("Score After True:", game.currentRound.currentPlayer.score)
-        // console.log("Score After True", game.currentRound.currentPlayer.score)
       } else {
         this.wrongGuess();
         console.log("incorrect");
@@ -118,11 +115,8 @@ const domUpdates = {
   updateScore(ofWhose) {
     $(`.PP${ofWhose.id}-score`).text('');
     $(`.PP${ofWhose.id}-score`).text(ofWhose.score);
- 
   }
 
-
- 
 };
 
 export default domUpdates;
