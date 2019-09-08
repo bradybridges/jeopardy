@@ -47,6 +47,8 @@ $(document).ready(function() {
       let cardIndex = e.currentTarget.dataset.index
       game.currentRound.setCurrentClue(cardIndex);
       domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
+      $(e.currentTarget).wrap("<strike>");
+      $(e.currentTarget).off();
     }
   })
 

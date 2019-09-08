@@ -92,6 +92,8 @@ const domUpdates = {
     this.playerOneAppend(game.generatedPlayers[0]);
     this.playerTwoAppend(game.generatedPlayers[1]);
     this.playerThreeAppend(game.generatedPlayers[2]);
+
+    //forEach and append dynamically?
   },
 
   playerOneAppend(player1) {
