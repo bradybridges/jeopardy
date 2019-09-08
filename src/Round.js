@@ -38,8 +38,9 @@ class Round {
     return Math.floor(Math.random() * 15);
   }
 
-  setCurrentClue(index) {
-    this.currentClue = this.clues[index];
+  setCurrentClue(answer) {
+    // this.currentClue = this.clues[index];
+    this.currentClue = this.clues.find(clue => clue.answer === answer)
     console.log("currentClue", this.currentClue)
     console.log("currentAnswer", this.currentClue.answer)
   }
@@ -47,27 +48,23 @@ class Round {
   takeGuess(guess) {
     if (guess === this.currentClue.answer.toLowerCase()) {
       this.handleGuess(true);
-      this.nextRoundHelper();
       return true;
     } else {
       this.handleGuess(false);
-      this.nextRoundHelper();
       return false;
     }
   }
 
   handleGuess(isGoodGuess) {
-    const currentPlayerIndex = this.getPlayerIndex();
     const currentClueIndex = this.getClueIndex();
     if (isGoodGuess) {
       this.currentPlayer.incrementScore(this.currentClue.pointValue);
-      this.clues.splice(currentClueIndex, 1);
-      this.changePlayer();
     } else {
       this.currentPlayer.decrementScore(this.currentClue.pointValue);
-      this.players[currentPlayerIndex] = this.currentPlayer;
-      this.changePlayer();
     }
+    this.changePlayer();
+    this.clues.splice(currentClueIndex, 1);
+    this.nextRoundHelper();
   }
 
   nextRoundHelper() {

@@ -62,7 +62,7 @@ class Game {
 
   selectClueOptionsForRound() {
     this.clues = [];
-
+    debugger;
     let currentCategoriesIds = this.currentCategories.map(category => category.id);
     let fourClueTopics = currentCategoriesIds.map(id => {
       return this.data.clues.reduce((acc, currentClue) => {
@@ -102,7 +102,7 @@ class Game {
         finalClues.push(pointValues[randomIndex])
       })
       return finalClues
-    }, []).sort((a,b) => {
+    }, []).sort((a, b) => {
       return a.pointValue - b.pointValue
     });
     this.clues = sixteenClues;

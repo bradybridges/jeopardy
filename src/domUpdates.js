@@ -17,6 +17,7 @@ const domUpdates = {
     for (let i = 0; i < 16; i++) {
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
       $(gridItemToTarget).attr('data-index', i)
+      $(gridItemToTarget).attr('data-answer', clues[i].answer)
       $(gridItemToTarget).text(clues[i].pointValue);
     }
   },
