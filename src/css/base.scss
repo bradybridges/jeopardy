@@ -120,8 +120,8 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  min-height: 60vh;
-  min-width: 60vw;
+  // min-height: 25vh;
+  // max-width: 50%;
   color: white;
   border: 2px solid white;
   position: absolute;
@@ -188,8 +188,8 @@ body {
 .player-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 40%;
   width: 75%;
+  margin-top:50%;
 }
 
 .podium {

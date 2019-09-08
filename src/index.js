@@ -41,10 +41,9 @@ $(document).ready(function() {
   $('.grid-item').click( (e) => {
     e.preventDefault()
     if (!e.currentTarget.classList.contains('category')) {
-      let cardIndex = e.currentTarget.dataset.index
       let cardAnswer = e.currentTarget.dataset.answer
       game.currentRound.setCurrentClue(cardAnswer);
-      domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
+      domUpdates. populateClueHelper(game.currentRound.currentClue.question, game);
       $(e.currentTarget).wrap("<strike>");
       $(e.currentTarget).off();
     }

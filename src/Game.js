@@ -23,6 +23,7 @@ class Game {
     this.generateCategories();
     this.selectClueOptionsForRound();
     this.generateRound();
+    console.log("GameInfo:", this.currentRound.clues)
   }
 
   newRound() {
