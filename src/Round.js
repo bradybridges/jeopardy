@@ -3,11 +3,8 @@ class Round {
     this.game = game;
     this.players = generatedPlayers;
     this.clues = clues;
-    this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
-    this.currentGuess;
-    this.currentAnswer;
+    this.currentPlayer = this.players[0];
     this.currentClue;
-    this.guessCount = 0;
     this.dailyDouble();
   }
 
@@ -43,36 +40,38 @@ class Round {
   }
        
   takeGuess(guess) {
-    if (guess === this.currentClue.answer.toLowerCase()) {
+    if (guess === this.currentClue.answer) {
       this.handleGuess(guess, true);
-      this.nextClueHandler(true)
     } else {
       this.handleGuess(guess, false);
-      this.nextClueHandler(false);
     }
   }
 
   handleGuess(guess, isGoodGuess) {
     const currentPlayerIndex = this.getPlayerIndex();
     const currentClueIndex = this.getClueIndex();
-    if (isGoodGuess) {
-      this.currentPlayer.score += this.currentClue.pointValue;
-      this.clues.splice(currentClueIndex, 1);
-    } else {
-      this.guessCount++;
-      this.currentPlayer.score -= this.currentClue.pointValue;
-      this.players[currentPlayerIndex] = this.currentPlayer;
-      this.changePlayer();
-    }
-  }
+    const currentPointValue = this.currentClue.pointValue;
 
-  nextClueHandler(isGoodGuess) {
-    if (this.guessCount === 3 || isGoodGuess) {
-      this.guessCount = 0;
-    }
-    if(this.isClueArrayEmpty()) {
-      this.game.nextRoundHandler();
-    }
+    // if (isGoodGuess) {
+    //   this.currentPlayer.incrementScore(currentPointValue);
+    //   this.players[currentPlayerIndex] = this.currentPlayer;
+    //   this.changePlayer(); 
+    //   this.clues.splice(currentClueIndex, 1);
+    // } else {
+    //   this.currentPlayer.decrementScore(currentPointValue); 
+    //   this.players[currentPlayerIndex] = this.currentPlayer;
+    //   this.changePlayer();
+    // }
+
+      if(isGoodGuess) {
+        this.currentPlayer.incrementScore(currentPointValue);
+      } else {
+        this.currentPlayer.decrementScore(currentPointValue);
+      }
+
+      this.players[currentPlayerIndex] = this.currentPlayer;
+      this.changePlayer(); 
+      this.clues.splice(currentClueIndex, 1);
   }
 
   changePlayer() {
@@ -89,7 +88,7 @@ class Round {
   }
 
   isClueArrayEmpty() {
-    return this.clues.length === 0 ? true : false;
+    return this.clues.length === 0;
   }
 
   findDailyDoubles() {

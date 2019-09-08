@@ -32,9 +32,10 @@ const domUpdates = {
 
   popupEvent(game) {
     $('.user-guess-btn').click( (e) => {
-      e.preventDefault()
+      e.preventDefault();
       let guess = $('.user-input').val().toLowerCase();
-      game.currentRound.takeGuess(guess)
+      game.currentRound.takeGuess(guess);
+      this.updatePlayerScore(game);
 
     })
   },
@@ -46,6 +47,15 @@ const domUpdates = {
     $('.PP2-score').text(game.generatedPlayers[1].score);
     $('.PP3-name').text(game.generatedPlayers[2].name);
     $('.PP3-score').text(game.generatedPlayers[2].score);
+  },
+
+  updatePlayerScore(game) {
+    let index = game.currentRound.getPlayerIndex();
+    let score;
+    const scoreElement = `.PP${index === 0 ? 3 : index}-score`;
+    index = index === 0 ? 2 : index - 1;
+    score = game.currentRound.players[index].score;
+    $(scoreElement).text(score);
   }
  
 };
