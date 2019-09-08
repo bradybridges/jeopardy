@@ -36,8 +36,8 @@ const domUpdates = {
       let guess = $('.user-input').val().toLowerCase();
       game.currentRound.takeGuess(guess);
       this.updatePlayerScore(game);
-
-    })
+      $('.clue-info').remove();
+    });
   },
 
   populatePlayerData(game) {
