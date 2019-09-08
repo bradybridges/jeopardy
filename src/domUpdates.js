@@ -22,6 +22,10 @@ const domUpdates = {
     }
   },
 
+  populateClueHelper(question, game) {
+    game.currentRound.currentClue.dailyDouble ? this.populateDailyDouble(question, game) : this.populateClueInteraction(question, game);
+  },
+
   populateClueInteraction(question, game) {
     $('.clue-info').remove();
     console.log("inDOM BEFORE APPEND CARD", $('.user-input').val())
@@ -30,39 +34,73 @@ const domUpdates = {
     <input class="user-input" type="text" placeholder="Enter Guess">
     <button class="user-guess-btn">Submit Guess</button>
   </div>`);
-  $('.pop-up-clue').removeAttr('hidden')
-  console.log("inDOM AFTER APPEND CARD", $('.user-input').val())
-    this.checkGuessHelper(game)
+    $('.pop-up-clue').removeAttr('hidden')
+    console.log("inDOM AFTER APPEND CARD", $('.user-input').val())
+    this.checkGuessHelper(game);
+  },
+
+  populateDailyDouble(question, game) {
+    $('.clue-info').remove();
+    $('.pop-up-clue').append(`<div class="clue-info">
+    <p class="clue-question">${question}</p>
+    <input class="wager-input" type="text" placeholder="Type in Wager">
+    <button class="wager-btn">Check Wager</button>
+    <input class="user-input" type="text" placeholder="What is: Your Guess?">
+    <button class="user-guess-daily-double-btn" disabled>Submit Guess</button>
+  </div>`);
+    $('.pop-up-clue').removeAttr('hidden');
+    this.checkDailyDoubleWagerHelper(game)
+    this.checkDailyDoubleGuessHelper(game);
   },
 
   checkGuessHelper(game) {
     $('.user-guess-btn').click( (e) => {
       e.preventDefault()
-
-  
-      console.log("current Player:", game.currentRound.currentPlayer.id)
-      // console.log("Score Before:", game.currentRound.currentPlayer.score)
-
       let guess = $('.user-input').val().toLowerCase();
-
       console.log("Guess:", guess)
-
       let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeGuess(guess);
       this.updateScore(playerGuessing);
       console.log("player guessing:", playerGuessing)
       if (result === true) {
         this.correctGuess();
-
         console.log("correct")
-
       } else {
         this.wrongGuess();
         console.log("incorrect");
-        
+      }
+    })
+  },
+  checkDailyDoubleWagerHelper(game) {
+    $('.wager-btn').click( (e) => {
+      e.preventDefault()
+      let wager = parseInt($('.wager-input').val());
+      if (game.currentRound.isGoodWager(wager)) {
+        this.correctWager();
+        $('.user-guess-daily-double-btn').prop("disabled", false);
+      } else {
+        this.incorrectWager();
+        $('.wager-input').val('');
+      }
+    })
+  },
 
-        console.log("Person After False", game.currentRound.currentPlayer);
-        console.log("Score After False", game.currentRound.currentPlayer.score);
+  checkDailyDoubleGuessHelper(game) {
+    $('.user-guess-daily-double-btn').click( (e) => {
+      e.preventDefault()
+      let guess = $('.user-input').val().toLowerCase();
+      console.log("Daily Double Guess:", guess);
+      let wager = parseInt($('.wager-input').val());
+      let playerGuessing = game.currentRound.currentPlayer;
+      let result = game.currentRound.takeDailyDoubleGuess(guess, wager);
+      this.updateScore(playerGuessing);
+      console.log("player guessing:", playerGuessing)
+      if (result === true) {
+        this.correctGuess();
+        console.log("correct")
+      } else {
+        this.wrongGuess();
+        console.log("incorrect");
       }
     })
   },
@@ -115,7 +153,16 @@ const domUpdates = {
   updateScore(ofWhose) {
     $(`.PP${ofWhose.id}-score`).text('');
     $(`.PP${ofWhose.id}-score`).text(ofWhose.score);
+  },
+
+  correctWager() {
+    alert("Wager Accepted. Guess on.")
+  },
+
+  incorrectWager() {
+    alert("Wager Denied. Wage on.")
   }
+
 
 };
 
