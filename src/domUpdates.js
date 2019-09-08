@@ -38,6 +38,15 @@ const domUpdates = {
 
     })
   },
+
+  populatePlayerData(game) {
+    $('.PP1-name').text(game.generatedPlayers[0].name);
+    $('.PP1-score').text(game.generatedPlayers[0].score);
+    $('.PP2-name').text(game.generatedPlayers[1].name);
+    $('.PP2-score').text(game.generatedPlayers[1].score);
+    $('.PP3-name').text(game.generatedPlayers[2].name);
+    $('.PP3-score').text(game.generatedPlayers[2].score);
+  }
  
 };
 

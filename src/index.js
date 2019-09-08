@@ -32,10 +32,10 @@ $(document).ready(function() {
     let player3 = $('.player-three-intake').val();
     
     game = new Game(data, [player1, player2, player3])
-    console.log("Game.data", game);
 
     domUpdates.transitionToFirstRound();
     domUpdates.populateBoard(game.currentCategories, game.clues)
+    domUpdates.populatePlayerData(game);
   })
 
   $('.grid-item').click( (e) => {
@@ -45,7 +45,8 @@ $(document).ready(function() {
       game.currentRound.setCurrentClue(cardIndex);
       domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
     }
-  })
+  });
+
 
   
 })
