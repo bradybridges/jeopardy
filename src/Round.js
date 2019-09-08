@@ -62,6 +62,7 @@ class Round {
     if (isGoodGuess) {
       this.currentPlayer.incrementScore(this.currentClue.pointValue);
       this.clues.splice(currentClueIndex, 1);
+      this.changePlayer();
     } else {
       this.currentPlayer.decrementScore(this.currentClue.pointValue);
       this.players[currentPlayerIndex] = this.currentPlayer;
