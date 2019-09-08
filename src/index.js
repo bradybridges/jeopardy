@@ -34,6 +34,9 @@ $(document).ready(function() {
     game = new Game(data, [player1, player2, player3])
     console.log("Game.data", game);
 
+    domUpdates.appendPlayers(game);
+
+
     domUpdates.transitionToFirstRound();
     domUpdates.populateBoard(game.currentCategories, game.clues)
   })

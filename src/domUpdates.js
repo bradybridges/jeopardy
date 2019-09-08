@@ -38,23 +38,31 @@ const domUpdates = {
     $('.user-guess-btn').click( (e) => {
       e.preventDefault()
 
-      console.log("doomdidoomdidoooom", $('.user-input').val())
+  
       console.log("Person After True:", game.currentRound.currentPlayer.id)
       console.log("Score Before:", game.currentRound.currentPlayer.score)
+
       let guess = $('.user-input').val().toLowerCase();
+
       console.log("Guess:", guess)
-      // console.log("Answer", game.currentRound.currentAnswer)
+
+      let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeGuess(guess);
-      console.log("RESULT", result)
+      this.updateScore(playerGuessing);
+      console.log("player guessing:", playerGuessing)
       if (result === true) {
         this.correctGuess();
+
         console.log("correct")
-        console.log("Person After Correct Guess:", game.currentRound.currentPlayer.id)
-        console.log("Score After True:", game.currentRound.currentPlayer.score)
+
+        // console.log("Person After Correct Guess:", game.currentRound.currentPlayer.id)
+        // console.log("Score After True:", game.currentRound.currentPlayer.score)
         // console.log("Score After True", game.currentRound.currentPlayer.score)
       } else {
         this.wrongGuess();
-        console.log("incorrect")
+        console.log("incorrect");
+        
+
         console.log("Person After False", game.currentRound.currentPlayer);
         console.log("Score After False", game.currentRound.currentPlayer.score);
       }
@@ -78,6 +86,37 @@ const domUpdates = {
     // <img src="../images/host.gif">
     </div> `);
     $('.clue-info').fadeOut(3000);
+  },
+
+  appendPlayers(game) {
+    this.playerOneAppend(game.generatedPlayers[0]);
+    this.playerTwoAppend(game.generatedPlayers[1]);
+    this.playerThreeAppend(game.generatedPlayers[2]);
+  },
+
+  playerOneAppend(player1) {
+    console.log("PLAYA1", player1)
+    $('.PP1-name').text(player1.name);
+    $('.PP1-score').text(player1.score);
+  },
+
+  playerTwoAppend(player1) {
+    console.log("PLAYA2", player1)
+    $('.PP2-name').text(player1.name);
+    $('.PP2-score').text(player1.score);
+  },
+
+  playerThreeAppend(player1) {
+    console.log("PLAYA3", player1)
+    $('.PP3-name').text(player1.name);
+    $('.PP3-score').text(player1.score);
+  },
+
+  updateScore(ofWhose) {
+    if (ofWhose.id === 1) {
+      $('.PP1-score').text('');
+      $('.PP1-score').text(ofWhose.score);
+    }
   }
 
 
