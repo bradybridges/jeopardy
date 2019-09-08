@@ -4,7 +4,7 @@ const domUpdates = {
 
   transitionToFirstRound() {
     $('.splash-container').fadeOut(2000);
-    $('.round-one').fadeIn(8000).prop('hidden', false)
+    $('.round-one').fadeIn(6000).prop('hidden', false)
   },
 
   populateBoard(categories, clues) {
@@ -15,13 +15,29 @@ const domUpdates = {
     }
 
     for (let i = 0; i < 16; i++) {
-      //possibly create grid items here
-      //grid would by dynamic for each ground, but needed to be cleared
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
       $(gridItemToTarget).attr('data-index', i)
       $(gridItemToTarget).text(clues[i].pointValue);
     }
-  }
+  },
+
+  populateClueInteraction(question, game) {
+    $(document.body).append(`<div class="clue-info">
+    <p class="clue-question">${question}</p>
+    <input class="user-input" type="text" placeholder="Enter Guess">
+    <button class="user-guess-btn">Submit Guess</button>
+  </div>`);
+    this.popupEvent(game)
+  },
+
+  popupEvent(game) {
+    $('.user-guess-btn').click( (e) => {
+      e.preventDefault()
+      let guess = $('.user-input').val().toLowerCase();
+      game.currentRound.takeGuess(guess)
+
+    })
+  },
  
 };
 

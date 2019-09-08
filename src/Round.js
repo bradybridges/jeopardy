@@ -43,7 +43,7 @@ class Round {
   }
        
   takeGuess(guess) {
-    if (guess === this.currentClue.answer) {
+    if (guess === this.currentClue.answer.toLowerCase()) {
       this.handleGuess(guess, true);
       this.nextClueHandler(true)
     } else {
@@ -68,9 +68,6 @@ class Round {
 
   nextClueHandler(isGoodGuess) {
     if (this.guessCount === 3 || isGoodGuess) {
-      //later call fn to prompt user to select next clue, take out code below
-      const currentClueIndex = this.getClueIndex();
-      this.currentClue = this.clues[currentClueIndex + 1];
       this.guessCount = 0;
     }
     if(this.isClueArrayEmpty()) {

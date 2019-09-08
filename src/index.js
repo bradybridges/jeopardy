@@ -38,11 +38,15 @@ $(document).ready(function() {
     domUpdates.populateBoard(game.currentCategories, game.clues)
   })
 
-  // $('.grid-item').click( (e) => {
-  //   e.preventDefault()
-  //   if (!e.target.classList.includes('category')){
-  //   }
-  // })
+  $('.grid-item').click( (e) => {
+    e.preventDefault()
+    if (!e.currentTarget.classList.contains('category')) {
+      let cardIndex = e.currentTarget.dataset.index
+      game.currentRound.setCurrentClue(cardIndex);
+      domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
+    }
+  })
+
   
 })
 

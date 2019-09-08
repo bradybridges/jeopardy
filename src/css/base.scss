@@ -145,3 +145,71 @@ body {
   min-height: 100%;
   padding: 5%;
 }
+
+.clue-info {
+  background: purple;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 65%;
+  padding: 11%;
+  letter-spacing: 3px;
+  position: absolute;
+  text-align: center;
+  top: 6%;
+  width: 100%;
+}
+
+.clue-question {
+  font-size: 2em;
+}
+
+.user-input {
+  font-size: 1.5em;
+  height: 100px;
+  letter-spacing: 3px;
+  margin: 3% 0 3% 0;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+ 
+}
+
+.user-guess-btn {
+  border: 2px solid lime;
+  font-size: 1.5em;
+  height: 100px;
+  letter-spacing: 3px;
+  padding: 20px;
+  width: 100%;
+}
+
+.player-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 62%;
+  width: 75%;
+}
+
+.podium {
+  align-items: center;
+  background: yellow;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 157px;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 25%;
+}
+
+.name,
+.score {
+  border: 1px solid black;
+  background: white;
+  height: 30px;
+  text-align: center;
+  width: 60%;
+}
+
