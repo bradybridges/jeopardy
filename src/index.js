@@ -25,18 +25,29 @@ $(document).ready(function() {
     }
   })
   
-  $('.start-game-btn').click(function(e) {
-      e.preventDefault()
+  $('.start-game-btn').click( (e) => {
+    e.preventDefault()
     let player1 = $('.player-one-intake').val();
     let player2 = $('.player-two-intake').val();
     let player3 = $('.player-three-intake').val();
     
     game = new Game(data, [player1, player2, player3])
-    console.log("Game.data", game);
 
     domUpdates.transitionToFirstRound();
     domUpdates.populateBoard(game.currentCategories, game.clues)
+    domUpdates.populatePlayerData(game);
   })
+
+  $('.grid-item').click( (e) => {
+    e.preventDefault()
+    if (!e.currentTarget.classList.contains('category')) {
+      let cardIndex = e.currentTarget.dataset.index
+      game.currentRound.setCurrentClue(cardIndex);
+      domUpdates.populateClueInteraction(game.currentRound.currentClue.question, game);
+    }
+  });
+
+
   
 })
 
