@@ -7,7 +7,7 @@ class Round {
     this.currentGuess;
     this.currentClue;
     this.dailyDouble();
-    console.log("DAILYDOUBLE", this.findDailyDoubles())
+    console.log("DAILYDOUBLE", this.findDailyDoubles());
   }
 
   dailyDouble() {
