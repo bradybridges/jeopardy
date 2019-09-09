@@ -5,10 +5,9 @@ class Round {
     this.clues = clues;
     this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
     this.currentGuess;
-    // this.currentAnswer;
     this.currentClue;
-    this.guessCount = 0;
     this.dailyDouble();
+    console.log("DAILYDOUBLE", this.findDailyDoubles())
   }
 
   dailyDouble() {
@@ -39,7 +38,6 @@ class Round {
   }
 
   setCurrentClue(answer) {
-    // this.currentClue = this.clues[index];
     this.currentClue = this.clues.find(clue => clue.answer === answer)
     console.log("currentClue", this.currentClue)
     console.log("currentAnswer", this.currentClue.answer)
@@ -55,6 +53,16 @@ class Round {
     }
   }
 
+  takeDailyDoubleGuess(guess, wager) {
+    if (guess === this.currentClue.answer.toLowerCase()) {
+      this.handleDailyDoubleGuess(true, wager);
+      return true;
+    } else {
+      this.handleDailyDoubleGuess(false, wager);
+      return false;
+    }
+  }
+
   handleGuess(isGoodGuess) {
     const currentClueIndex = this.getClueIndex();
     if (isGoodGuess) {
@@ -64,7 +72,19 @@ class Round {
     }
     this.changePlayer();
     this.clues.splice(currentClueIndex, 1);
-    this.nextRoundHelper();
+    // this.nextRoundHelper();
+  }
+
+  handleDailyDoubleGuess(isGoodGuess, wager) {
+    const currentClueIndex = this.getClueIndex();
+    if (isGoodGuess) {
+      this.currentPlayer.incrementScore(wager);
+    } else {
+      this.currentPlayer.decrementScore(wager);
+    }
+    this.changePlayer();
+    this.clues.splice(currentClueIndex, 1);
+    // this.nextRoundHelper();
   }
 
   nextRoundHelper() {
@@ -92,6 +112,16 @@ class Round {
 
   findDailyDoubles() {
     return this.clues.filter(clue => clue.dailyDouble === true);
+  }
+
+  isGoodWager(wager) {
+    let min = 5;
+    let max = this.clues[this.clues.length - 1].pointValue;
+    if (wager >= min && wager <= max) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
