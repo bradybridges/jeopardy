@@ -27,7 +27,7 @@ class Game {
   }
 
   newRound() {
-    if(this.roundCounter === 2) {
+    if (this.roundCounter === 2) {
       this.generateCategories();
       this.selectClueOptionsForRound();
       this.generateRound();
@@ -126,9 +126,7 @@ class Game {
         };
       });
       this.currentRound = new Round(this, this.generatedPlayers, this.clues);
-    } else {
-      // this.roundCounter++;
-    }
+    } 
   }
 
   nextRoundHandler() {

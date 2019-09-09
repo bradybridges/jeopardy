@@ -18,7 +18,6 @@ const domUpdates = {
 
     for (let i = 0; i < 16; i++) {
       let gridItemToTarget = `.grid-item:nth-child(${i + 5})`;
-      // $(gridItemToTarget).attr('data-index', i)
       $(gridItemToTarget).attr('data-answer', clues[i].answer)
       $(gridItemToTarget).text(clues[i].pointValue);
     }
@@ -121,8 +120,6 @@ const domUpdates = {
     this.playerOneAppend(game.generatedPlayers[0]);
     this.playerTwoAppend(game.generatedPlayers[1]);
     this.playerThreeAppend(game.generatedPlayers[2]);
-
-    //forEach and append dynamically?
   },
 
   playerOneAppend(player1) {
@@ -162,7 +159,7 @@ const domUpdates = {
   },
 
   handleNextRoundGameBoard(game) {
-    if(game.roundCounter === 2) {
+    if (game.roundCounter === 2) {
       $('.round-one').remove();
       $('.round-two').fadeIn(6000);
       this.populateBoard(game.currentCategories, game.clues);
