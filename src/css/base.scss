@@ -204,6 +204,33 @@ label {
   margin-top:50%;
 }
 
+.wager-input {
+  background-color: white;
+  float: left;
+  font-size: 1em;
+  height: 50px;
+  letter-spacing: 3px;
+  margin: 3% 0 3% 0;
+  padding: 20px;
+  text-align: center;
+  width: 47%;
+}
+
+.wager-btn {
+background-color: white;
+border: 2px solid lime;
+float: right;
+font-size: 1em;
+height: 50px;
+margin: 3% 0 3% 0;
+padding: 20px;
+width: 47%;
+}
+
+.user-guess-daily-double-btn {
+  background-color: white
+
+} 
 .player-one-stand {
   filter: drop-shadow(4px 8px 6px $player-one-color);
 }
