@@ -3,11 +3,10 @@ class Round {
     this.game = game;
     this.players = generatedPlayers;
     this.clues = clues;
-    this.currentPlayer = this.players[0]; //Change to be last rounds player to answer last question correctly
+    this.currentPlayer = this.players[0];
     this.currentGuess;
     this.currentClue;
     this.dailyDouble();
-    console.log("DAILYDOUBLE", this.findDailyDoubles());
   }
 
   dailyDouble() {
@@ -38,9 +37,7 @@ class Round {
   }
 
   setCurrentClue(answer) {
-    this.currentClue = this.clues.find(clue => clue.answer === answer)
-    console.log("currentClue", this.currentClue)
-    console.log("currentAnswer", this.currentClue.answer)
+    this.currentClue = this.clues.find(clue => clue.answer === answer);
   }
        
   takeGuess(guess) {
@@ -72,7 +69,6 @@ class Round {
     }
     this.changePlayer();
     this.clues.splice(currentClueIndex, 1);
-    // this.nextRoundHelper();
   }
 
   handleDailyDoubleGuess(isGoodGuess, wager) {
@@ -84,7 +80,6 @@ class Round {
     }
     this.changePlayer();
     this.clues.splice(currentClueIndex, 1);
-    // this.nextRoundHelper();
   }
 
   nextRoundHelper() {
@@ -111,7 +106,9 @@ class Round {
   }
 
   findDailyDoubles() {
-    return this.clues.filter(clue => clue.dailyDouble === true);
+    if(this.game.roundCounter <= 2) {
+      return this.clues.filter(clue => clue.dailyDouble === true);
+    }
   }
 
   isGoodWager(wager) {

@@ -1,9 +1,10 @@
+import Round from '../src/Round';
+
 class Round3 extends Round {
-  constructor(category, clue, player) {
+  constructor(game, generatedPlayers, clues, category) {
+    super(game, generatedPlayers, clues);
     this.category = category;
-    this.currentClue = clue;
-    this.currentPlayer = this.players[0];
-    this.guessCount = 0;
+    this.currentClue = this.clues;
   }
 
   takeGuess(guess, wager) {
@@ -30,6 +31,6 @@ class Round3 extends Round {
     this.players.sort((a,b) => a.score - b.score);
     return this.players[2];
   }
-
-
 }
+
+export default Round3;
