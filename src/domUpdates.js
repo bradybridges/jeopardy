@@ -106,22 +106,22 @@ const domUpdates = {
   },
 
   correctGuess() {
+    $('.clue-info').remove();
     $(document.body).append(`
     <div class="clue-info">
     <p class="correct-gif-text">Correct!</p>
-    // <img src="../images/correct-guess.gif" class="correct-guess">
-    <img src="../images/splash.gif" class="moving-grid">
+    <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(4000);
   },
 
   wrongGuess() {
+    $('.clue-info').remove();
     $(document.body).append(`<div class="clue-info">
     <p class="correct-gif-text">Wrong!</p>
-    <img src="../images/splash.gif" class="moving-grid">
-    // <img src="../images/host.gif">
+    <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(4000);
   },
 
   appendPlayers(game) {

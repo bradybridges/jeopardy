@@ -3,6 +3,15 @@ import $ from 'jquery';
 import './css/base.scss';
 
 import './images/splash.gif';
+import './images/correct-guess.gif';
+import './images/wrong-guess.gif';
+import './images/host.gif';
+import './images/round-one.jpg';
+import './images/round-two.jpg';
+// import './images/round-three.jpeg';
+import './images/game-fin.jpg';
+
+
 
 import Game from './Game';
 
