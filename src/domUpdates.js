@@ -30,14 +30,12 @@ const domUpdates = {
 
   populateClueInteraction(question, game) {
     $('.clue-info').remove();
-    console.log("inDOM BEFORE APPEND CARD", $('.user-input').val())
     $('.pop-up-clue').append(`<div class="clue-info">
     <p class="clue-question">${question}</p>
     <input class="user-input" type="text" placeholder="Enter Guess">
     <button class="user-guess-btn">Submit Guess</button>
   </div>`);
     $('.pop-up-clue').removeAttr('hidden')
-    console.log("inDOM AFTER APPEND CARD", $('.user-input').val())
     this.checkGuessHelper(game);
   },
 
@@ -59,16 +57,12 @@ const domUpdates = {
     $('.user-guess-btn').click( (e) => {
       e.preventDefault()
       let guess = $('.user-input').val().toLowerCase();
-      console.log("Guess:", guess)
       let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeGuess(guess);
-      console.log("player guessing:", playerGuessing)
       if (result === true) {
         this.correctGuess();
-        console.log("correct")
       } else {
         this.wrongGuess();
-        console.log("incorrect");
       }
       this.updateScore(playerGuessing, game);
     })
@@ -91,17 +85,14 @@ const domUpdates = {
     $('.user-guess-daily-double-btn').click( (e) => {
       e.preventDefault()
       let guess = $('.user-input').val().toLowerCase();
-      console.log("Daily Double Guess:", guess);
       let wager = parseInt($('.wager-input').val());
       let playerGuessing = game.currentRound.currentPlayer;
       let result = game.currentRound.takeDailyDoubleGuess(guess, wager);
-      console.log("player guessing:", playerGuessing)
+
       if (result === true) {
         this.correctGuess();
-        console.log("correct")
       } else {
         this.wrongGuess();
-        console.log("incorrect");
       }
       this.updateScore(playerGuessing, game);
     })
@@ -135,19 +126,16 @@ const domUpdates = {
   },
 
   playerOneAppend(player1) {
-    console.log("PLAYA1", player1)
     $('.PP1-name').text(player1.name);
     $('.PP1-score').text(player1.score);
   },
 
   playerTwoAppend(player1) {
-    console.log("PLAYA2", player1)
     $('.PP2-name').text(player1.name);
     $('.PP2-score').text(player1.score);
   },
 
   playerThreeAppend(player1) {
-    console.log("PLAYA3", player1)
     $('.PP3-name').text(player1.name);
     $('.PP3-score').text(player1.score);
   },
@@ -155,7 +143,6 @@ const domUpdates = {
   updateScore(ofWhose, game) {
     $(`.PP${ofWhose.id}-score`).text('');
     $(`.PP${ofWhose.id}-score`).text(ofWhose.score);
-    console.log("UPDATED SCORE line 156")
     this.isRoundOver(game);
   },
 
@@ -168,23 +155,21 @@ const domUpdates = {
   },
 
   isRoundOver(game) {
-    console.log("Before round is over check", game.currentRound.isClueArrayEmpty())
     if (game.currentRound.isClueArrayEmpty()) {
-      console.log("INSIDE IF LINE 169")
       game.currentRound.nextRoundHelper();
       this.handleNextRoundGameBoard(game);
-
     }
   },
 
   handleNextRoundGameBoard(game) {
-    if(game.roundCounter = 2) {
+    if(game.roundCounter === 2) {
       $('.round-one').remove();
       $('.round-two').fadeIn(6000);
+      this.populateBoard(game.currentCategories, game.clues);
+    } else {
+      $('.round-two').remove();
+      console.log('Set Round3 Board');
     }
-    console.log("About to pop board yo")
-    console.log("clues before next round", game.clues)
-    this.populateBoard(game.currentCategories, game.clues);
   },
 
 
