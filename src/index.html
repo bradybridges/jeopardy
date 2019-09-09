@@ -12,20 +12,19 @@
       <form class="intake-form">
         <div class="intake-form-inputs">
         <label class ="player-one-label" id="player-intake"> Player One 
-        <input class="player-one-intake" placeholder="Player One Name" type="text">
+        <input class="player-one-intake" placeholder="Player One Name" type="text" maxlength="20">
         </label>
         <label class ="player-two-label" id="player-intake"> Player Two 
-        <input class="player-two-intake" placeholder="Player Two Name" type="text">
+        <input class="player-two-intake" placeholder="Player Two Name" type="text" maxlength="20">
       </label>
       <label class ="player-three-label" id="player-intake"> Player Three 
-        <input class="player-three-intake" placeholder="Player Three Name" type="text">
+        <input class="player-three-intake" placeholder="Player Three Name" type="text" maxlength="20">
       </label>
         <button class="start-game-btn" disabled>Start Game</button>
       </div>
       </form>
     </div>
 
-    
     <div class="round-one" hidden>
       <div class="round-one-foreground"> 
         <div class="grid-container">
@@ -50,54 +49,28 @@
             <div class="grid-item"></div>
             <div class="grid-item"></div>
         </div>  
+        <!-- <div id="popup-clue"></div> -->
       </div>
     </div>
-    <div class="round-two" style="display:none">
-      <div class="round-one-foreground"> 
-        <div class="grid-container">
-            <div class="grid-item category"></div>
-            <div class="grid-item category"></div>
-            <div class="grid-item category"></div>
-            <div class="grid-item category"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-        </div>  
-      </div>
-    </div>
-
+    
     <div class="pop-up-clue" hidden></div>
-
-    <div class="player-container">
+    
+    <div class="player-container" style="display: none">
       <div class="player-one-stand podium">
         <p class="PP1-name name"><span class="PP1-name"></span></p>
         <p  class="PP1-score score"></p>
       </div>
-    <div class="player-two-stand podium">
-      <p class="PP2-name name"></p>
-      <p class="PP2-score score"></p>
-    </div>    
-    <div class="player-three-stand podium">
-      <p class="PP3-name name"></p>
-      <p class="PP3-score score"></p>
+      <div class="player-two-stand podium">
+        <p class="PP2-name name"></p>
+        <p class="PP2-score score"></p>
+      </div>    
+      <div class="player-three-stand podium">
+        <p class="PP3-name name"></p>
+        <p class="PP3-score score"></p>
+      </div>
     </div>
-    </div>
-
     
-
+    
 
 
     <!-- <h1 hidden>Jeopardy</h1> -->
