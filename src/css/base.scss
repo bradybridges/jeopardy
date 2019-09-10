@@ -255,7 +255,8 @@ label {
 }
 
 .user-guess-btn {
-  border: 2px solid lime;
+  @extend .start-game-btn;
+  width: 50%;
 }
 
 .player-container {
