@@ -168,8 +168,23 @@ label {
   padding: 5%;
 }
 
+.picked {
+  background-color: #70129e;
+  opacity: 0.8;
+  padding: 18px;
+}
+
+.grid-transition {
+  background-color: black;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .1s ease-in-out;
+}
+
 .clue-info {
-  background: purple;
+  animation: clue-info 1s;
+  background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
+  box-shadow: 0 4px 15px 0 rgba(42, 9, 57, 0.75);
   color: white;
   left: 50%;
   letter-spacing: 3px;
@@ -178,33 +193,45 @@ label {
   padding: 11%;
   position: absolute;
   text-align: center;
-  top: 4%;
+  top: 3%;
   width: 96%;
   z-index: 1;
+}
+
+@keyframes clue-info {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .clue-question {
   font-size: 2em;
 }
 
-.user-input {
+.user-input,
+.user-guess-btn {
   font-size: 1.5em;
   height: 100px;
   letter-spacing: 3px;
-  margin: 3% 0 3% 0;
   padding: 20px;
   text-align: center;
   width: 100%;
- 
+}
+
+.user-input {
+  margin: 3% 0 3% 0;
 }
 
 .user-guess-btn {
   border: 2px solid lime;
-  font-size: 1.5em;
-  height: 100px;
-  letter-spacing: 3px;
-  padding: 20px;
-  width: 100%;
 }
 
 .player-container {
@@ -212,13 +239,13 @@ label {
   display: flex;
   left: 13%;
   position: absolute;
-  width: 75%;
   margin-top:50%;
+  width: 75%;
 }
 
-.wager-input {
+.wager-input,
+.wager-btn {
   background-color: white;
-  float: left;
   font-size: 1em;
   height: 50px;
   letter-spacing: 3px;
@@ -228,31 +255,40 @@ label {
   width: 47%;
 }
 
+.wager-input {
+  float: left;
+}
+
 .wager-btn {
-background-color: white;
-border: 2px solid lime;
-float: right;
-font-size: 1em;
-height: 50px;
-margin: 3% 0 3% 0;
-padding: 20px;
-width: 47%;
+  border: 2px solid lime;
+  float: right;
 }
 
 .user-guess-daily-double-btn {
-  background-color: white
-
-} 
-.player-one-stand {
-  filter: drop-shadow(4px 8px 6px $player-one-color);
+  background-color: white;
+  font-size: 1em;
+  height: 50px;
+  letter-spacing: 3px;
+  padding: 20px;
+  width: 100%;
+}
+ 
+.player-one-stand,
+.PP1-name,
+.PP1-score {
+  filter: drop-shadow(3px 6px 6px $player-one-color);
 }
 
-.player-two-stand {
-  filter: drop-shadow(4px 8px 6px $player-two-color);
+.player-two-stand,
+.PP2-name,
+.PP2-score {
+  filter: drop-shadow(3px 6px 6px $player-two-color);
 }
 
-.player-three-stand {
-  filter: drop-shadow(4px 8px 6px $player-three-color);
+.player-three-stand,
+.PP3-name,
+.PP3-score {
+  filter: drop-shadow(3px 6px 6px $player-three-color);
 }
 
 .podium {
@@ -274,7 +310,6 @@ width: 47%;
   background: white;
   border: 1px solid black;
   display: flex;
-  filter: drop-shadow(1px 2px 6px hotpink);
   height: 37px;
   justify-content: center;
   width: 72%;
