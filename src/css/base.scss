@@ -153,7 +153,7 @@ label {
 
 .category {
   height: 100%;
-  
+
 }
 
 .grid-item {
@@ -347,5 +347,22 @@ label {
   position: absolute;
   right: 89%;
   width: 9%;
+}
+
+h3 {
+  font-size: 3em;
+  font-weight: 900;
+  margin: 0px auto 35px;
+  text-shadow: 1px 1px 2px $player-one-color, 0 0 1em $player-two-color, 0 0 0.2em $player-three-color;
+}
+
+.player-guess-container {
+  color: white;
+}
+
+.winner {
+color: white;
+font-weight: 900;
+font-size: 5em;
 }
 

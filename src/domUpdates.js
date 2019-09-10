@@ -31,7 +31,7 @@ const domUpdates = {
     $('.clue-info').remove();
     $('.pop-up-clue').append(`<div class="clue-info clue-pop">
     <p class="clue-question">${question}</p>
-    <input class="user-input" type="text" placeholder="Enter Guess">
+    <input class="user-input" type="text" placeholder="${this.findCurrentPlayerName(game)} Enter Guess">
     <button class="user-guess-btn">Submit Guess</button>
   </div>`);
     $('.pop-up-clue').removeAttr('hidden')
@@ -40,11 +40,12 @@ const domUpdates = {
 
   populateDailyDouble(question, game) {
     $('.clue-info').remove();
-    $('.pop-up-clue').append(`<div class="clue-info">
+    $('.pop-up-clue').append(`<div class="clue-info daily-double">
+    <h3> Daily Double </h3>
     <p class="clue-question">${question}</p>
-    <input class="wager-input" type="text" placeholder="Type in Wager">
+    <input class="wager-input" type="text" placeholder="${this.findCurrentPlayerName(game)} Enter Wager">
     <button class="wager-btn">Check Wager</button>
-    <input class="user-input" type="text" placeholder="What is: Your Guess?">
+    <input class="user-input" type="text" placeholder=" ${this.findCurrentPlayerName(game)} Enter Guess">
     <button class="user-guess-daily-double-btn" disabled>Submit Guess</button>
   </div>`);
     $('.pop-up-clue').removeAttr('hidden');
@@ -179,15 +180,15 @@ const domUpdates = {
     <p> Please Enter Your Wagers</p>
     <div class="p1-wager">
       <p class="p1-wager-feedback"></p>
-      <input class="p1-wager-input">
+      <input class="p1-wager-input" placeholder="${game.currentRound.players[0].name} Enter Wager">
     </div>
     <div class="p2-wager">
         <p class="p2-wager-feedback"></p>
-        <input class="p2-wager-input">
+        <input class="p2-wager-input" placeholder="${game.currentRound.players[1].name} Enter Wager">
       </div>
       <div class="p3-wager">
           <p class="p3-wager-feedback"></p>
-          <input class="p3-wager-input" type="text">
+          <input class="p3-wager-input" placeholder="${game.currentRound.players[2].name} Enter Wager">
         </div>
     <button class="submit-wagers" disabled>Submit All Wagers</button>
   </div>`);
@@ -200,8 +201,6 @@ const domUpdates = {
   player1WageCheck(game) {
     $('.p1-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
       if (e.currentTarget.classList.contains('p1-wager-input')) {
         let wager = parseInt($('.p1-wager-input').val());
         this.wagerCheck(wager, 0, game);
@@ -213,8 +212,6 @@ const domUpdates = {
   player2WageCheck(game) {
     $('.p2-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET2", e.currentTarget.classList.contains('p2-wager-input'))
       if (e.currentTarget.classList.contains('p2-wager-input')) {
         let wager = parseInt($('.p2-wager-input').val());
         this.wagerCheck(wager, 1, game);
@@ -226,8 +223,6 @@ const domUpdates = {
   player3WageCheck(game) {
     $('.p3-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET3", e.currentTarget.classList.contains('p3-wager-input'))
       if (e.currentTarget.classList.contains('p3-wager-input')) {
         let wager = parseInt($('.p3-wager-input').val());
         this.wagerCheck(wager, 2, game);
@@ -237,16 +232,17 @@ const domUpdates = {
   },
 
   wagerCheck(wager, playerIndex, game) {
+    const name = game.generatedPlayers[playerIndex].name;
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
       const inputToSelect = `.p${playerIndex + 1}-wager-input`;
-      $(pToSelect).text('Valid Wager');
+      $(pToSelect).text(`${name} Valid Wager`);
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
       const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
-      $(pToSelect).text('Invalid Wager');
+      $(pToSelect).text( `${name} Invalid Wager`);
     }
     console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
@@ -259,7 +255,7 @@ const domUpdates = {
     let playersFeedback = [playerOneFeedback, playerTwoFeedback, playerThreeFeedback];
   
 
-    if (playersFeedback.filter(feedback => feedback === 'Valid Wager').length === 3) {
+    if (playersFeedback.filter(feedback => feedback.includes('Valid Wager')).length === 3) {
       $('.submit-wagers').prop('disabled', false);
     } else {
       $('.submit-wagers').prop('disabled', true);
@@ -296,7 +292,7 @@ const domUpdates = {
       <div class='player-guess-container'>
         <p class='player-name'>${name}'s Turn</p>
         <p class='final-question'>${question}</p>
-        <input class='player-guess-input' type='text' placeholder='Enter Guess'>
+        <input class='player-guess-input' type='text' placeholder='${this.findCurrentPlayerName(game)} Guess'>
         <button class='player-guess-button'>
           Submit Guess
         </button>
@@ -309,10 +305,11 @@ const domUpdates = {
     $('.player-guess-button').click(() => {
       const guess = $('.player-guess-input').val();
       guessCount++;
-      if(guessCount <= 2) {
+      if (guessCount <= 2) {
         guesses.push(guess);
         $('.player-name').text(`${game.generatedPlayers[guessCount].name}'s Turn`);
         $('.player-guess-input').val('');
+        $('.player-guess-input').attr("placeholder", `${game.generatedPlayers[guessCount].name} Enter Guess`);
       } else {
         guesses.push(guess);
         $('.player-guess-container').remove();
@@ -332,10 +329,17 @@ const domUpdates = {
   },
 
   displayWinner(game) {
+    
     const winnerName = game.currentRound.findWinner().name;
     $('.round-three').append(`
       <p class='winner'>${winnerName.toUpperCase()} Wins!</p>
     `);
+    console.log("winner", winnerName)
+  },
+
+  findCurrentPlayerName(game) {
+    console.log("CURRENT PLAYER NAME", game.currentRound.currentPlayer.name)
+    return game.currentRound.currentPlayer.name;
   }
 
 }

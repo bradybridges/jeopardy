@@ -7,6 +7,7 @@ class Round {
     this.currentGuess;
     this.currentClue;
     this.dailyDouble();
+    console.log("daily double", this.findDailyDoubles())
   }
 
   dailyDouble() {
@@ -106,7 +107,7 @@ class Round {
   }
 
   findDailyDoubles() {
-    if(this.game.roundCounter <= 2) {
+    if (this.game.roundCounter <= 2) {
       return this.clues.filter(clue => clue.dailyDouble === true);
     }
   }
