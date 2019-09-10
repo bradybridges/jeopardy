@@ -104,7 +104,7 @@ const domUpdates = {
     <p class="correct-gif-text">Correct!</p>
     <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(4000);
   },
 
   wrongGuess() {
@@ -113,7 +113,7 @@ const domUpdates = {
     <p class="correct-gif-text">Wrong!</p>
     <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(4000);
   },
 
   appendPlayers(game) {
