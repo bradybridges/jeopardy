@@ -10,6 +10,10 @@ import './images/round-one.jpg';
 import './images/round-two.jpg';
 // import './images/round-three.jpeg';
 import './images/game-fin.jpg';
+import './images/player-1-avatar.png';
+import './images/player-2-avatar.png';
+import './images/player-3-avatar.png';
+
 
 
 
@@ -20,10 +24,10 @@ import domUpdates from './domUpdates.js'
 let game;
 let data;
 
- fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
-    .then(dataResponse => dataResponse.json())
-    .then(dataResponse => data = dataResponse.data)
-    .catch(error => console.log(error));
+fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
+  .then(dataResponse => dataResponse.json())
+  .then(dataResponse => data = dataResponse.data)
+  .catch(error => console.log(error));
 
 $(document).ready(function() {
   console.log("MOOOOOOSES")
@@ -54,7 +58,15 @@ $(document).ready(function() {
       game.currentRound.setCurrentClue(cardAnswer);
       domUpdates. populateClueHelper(game.currentRound.currentClue.question, game);
       $(e.currentTarget).wrap("<strike>");
+      $(e.currentTarget).addClass('picked');
       $(e.currentTarget).off();
+      $(e.currentTarget).closest('.grid-item').removeClass('grid-transition');
+    }
+  });
+
+  $('.grid-item').hover((e) => {
+    if (!e.currentTarget.classList.contains('category') && !e.currentTarget.classList.contains('picked')) {
+      $(e.currentTarget).closest('.grid-item').toggleClass('grid-transition');
     }
   });
 
