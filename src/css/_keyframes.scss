@@ -1,0 +1,23 @@
+@keyframes floatSide {
+	0% {
+		transform: translatey(-50px);
+	}
+	50% {
+		transform: translatey(-100px);
+	}
+	100% {
+		transform: translatey(-50px);
+	}
+}
+
+@keyframes floatMiddle {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-50px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
