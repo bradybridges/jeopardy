@@ -268,6 +268,10 @@ const domUpdates = {
     console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
+
+  //isCurrentPlayer() {}
+  //return index game.currentPlayer[0] return true
+  //conditional to select player
  
 
   

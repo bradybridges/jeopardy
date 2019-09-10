@@ -176,7 +176,9 @@ label {
 }
 
 .grid-transition {
-  background-color: black;
+  background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
+
+  // background-color: black;
   cursor: pointer;
   transform: scale(1.1);
   transition: all .1s ease-in-out;
