@@ -156,7 +156,7 @@ label {
 
 .category {
   height: 100%;
-  
+
 }
 
 .grid-item {
@@ -350,5 +350,12 @@ label {
 .category-third-round {
   color: white;
   z-index: 10;
+}
+
+h3 {
+  font-size: 3em;
+  font-weight: 900;
+  margin: 0px auto 35px;
+  text-shadow: 1px 1px 2px $player-one-color, 0 0 1em $player-two-color, 0 0 0.2em $player-three-color;
 }
 
