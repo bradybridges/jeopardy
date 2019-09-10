@@ -104,7 +104,7 @@ const domUpdates = {
     <p class="correct-gif-text">Correct!</p>
     <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(500);
+    $('.clue-info').fadeOut(3000);
   },
 
   wrongGuess() {
@@ -113,7 +113,7 @@ const domUpdates = {
     <p class="correct-gif-text">Wrong!</p>
     <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(500);
+    $('.clue-info').fadeOut(3000);
   },
 
   appendPlayers(game) {
@@ -174,22 +174,22 @@ const domUpdates = {
 
   populateRoundThreeCategory(question, game) {
     $('.round-three').append(`<div class="category-third-round">
-    <p> Category:</p>
-    <p class="clue-question">${question}</p>
-    <p> Please Enter Your Wagers</p>
-    <div class="p1-wager">
+    <p class="round-3-style"> Category:</p>
+    <p class="clue-question round-3-style">${question}</p>
+    <p class="round-3-style"> Please Enter Your Wagers</p>
+    <div class="p1-wager round-3-style">
       <p class="p1-wager-feedback"></p>
       <input class="p1-wager-input">
     </div>
-    <div class="p2-wager">
-        <p class="p2-wager-feedback"></p>
-        <input class="p2-wager-input">
-      </div>
-      <div class="p3-wager">
-          <p class="p3-wager-feedback"></p>
-          <input class="p3-wager-input" type="text">
-        </div>
-    <button class="submit-wagers" disabled>Submit All Wagers</button>
+    <div class="p2-wager round-3-style">
+      <p class="p2-wager-feedback"></p>
+      <input class="p2-wager-input">
+    </div>
+    <div class="p3-wager round-3-style">
+      <p class="p3-wager-feedback"></p>
+      <input class="p3-wager-input" type="text">
+    </div>
+    <button class="submit-wagers round-3-style" disabled>Submit All Wagers</button>
   </div>`);
     this.player1WageCheck(game);
     this.player2WageCheck(game);
@@ -292,11 +292,12 @@ const domUpdates = {
   appendGuessContainer(playerIndex, game) {
     const name = game.generatedPlayers[playerIndex].name;
     const question = game.currentRound.currentClue.question;
+    console.log(name);
     $('.round-three').append(`
       <div class='player-guess-container'>
-        <p class='player-name'>${name}'s Turn</p>
-        <p class='final-question'>${question}</p>
-        <input class='player-guess-input' type='text' placeholder='Enter Guess'>
+        <p class='player-name last-page-name'>${name}'s Turn</p>
+        <p class='final-question last-page-question'>${question}</p>
+        <input class='player-guess-input last-page-input' type='text' placeholder='Enter Guess'>
         <button class='player-guess-button'>
           Submit Guess
         </button>

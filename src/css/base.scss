@@ -341,14 +341,54 @@ label {
 }
 
 .round-three {
+  display: flex;
+  padding-top: 20px;
+  padding-left: 10px;
+  justify-content: center;
+  text-align: center;
   background-image: url("../images/game-fin.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 
+.round-3-style {
+  padding-bottom: 20px;
+}
+
+.p1-wager-input,
+.p2-wager-input,
+.p3-wager-input {
+  height: 25px;
+  width: 50%;
+}
+
 .category-third-round {
   color: white;
   z-index: 10;
+}
+
+.player-guess-container {
+  margin-top: 10%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.last-page-name{
+  font-size: 1.75rem;
+}
+
+.last-page-input {
+  text-align: center;
+  width: 50%;
+  height: 30px;
+  margin-left: 25%;
+  margin-bottom: 20px;
+}
+
+.last-page-question {
+  font-size: 1.5rem; 
 }
 
