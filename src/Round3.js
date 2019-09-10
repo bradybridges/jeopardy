@@ -5,6 +5,7 @@ class Round3 extends Round {
     super(game, generatedPlayers, clues);
     this.category = category;
     this.currentClue = this.clues;
+    this.wagers;
   }
 
   takeGuess(guess, wager) {
@@ -43,6 +44,23 @@ class Round3 extends Round {
     } else {
       return false;
     }
+  }
+
+  setWagers(wagerArray) {
+    this.wagers = wagerArray;
+  }
+
+  checkGuesses(guessArray) {
+    let index = 0;
+    guessArray.forEach(guess => {
+      if(guess === this.currentClue.answer) {
+        this.players[index].incrementScore(this.wagers[index]);
+        index++;
+      } else {
+        this.players[index].decrementScore(this.wagers[index]);
+        index++;
+      }
+    })
   }
 }
 

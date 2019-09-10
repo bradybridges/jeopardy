@@ -104,7 +104,7 @@ const domUpdates = {
     <p class="correct-gif-text">Correct!</p>
     <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(500);
   },
 
   wrongGuess() {
@@ -113,7 +113,7 @@ const domUpdates = {
     <p class="correct-gif-text">Wrong!</p>
     <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(3000);
+    $('.clue-info').fadeOut(500);
   },
 
   appendPlayers(game) {
@@ -195,6 +195,7 @@ const domUpdates = {
     this.player1WageCheck(game);
     this.player2WageCheck(game);
     this.player3WageCheck(game);
+    this.submitWagersHandler(game);
   },
 
   player1WageCheck(game) {
@@ -238,17 +239,17 @@ const domUpdates = {
 
   wagerCheck(wager, playerIndex, game) {
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
-      const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `p${playerIndex + 1}-wager-input`;
-      $(inputToSelect).val('')
+      const pToSelect = `.p${playerIndex + 1}-wager-feedback`;//removed . before p
+      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
+      // $(inputToSelect).val('')
       $(pToSelect).text('Valid Wager');
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
-      const pToSelect = `p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `p${playerIndex + 1}-wager-input`;
+      const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
+      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
       $(pToSelect).text('Invalid Wager');
-      $(inputToSelect).val('');
+      // $(inputToSelect).val('');
     }
     console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
@@ -269,9 +270,74 @@ const domUpdates = {
     console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
- 
+  submitWagersHandler(game) {
+    $('.submit-wagers').click(() => {
+      const player1Wager = parseInt($('.p1-wager-input').val());
+      const player2Wager = parseInt($('.p2-wager-input').val());
+      const player3Wager = parseInt($('.p3-wager-input').val());
 
+      game.currentRound.setWagers([player1Wager, player2Wager, player3Wager]);
+      $('.category-third-round').fadeOut(500);
+      setTimeout(function() {
+        $('.category-third-round').remove();
+      }, 500);
+      this.playerGuessesHandler(game);
+  });
+ },
+
+  playerGuessesHandler(game) {
+    let guessCount = 0;
+    let guesses = [];
+    this.appendGuessContainer( 0, game);
+    this.guessContainerHandler(guessCount, guesses, game);
+  },
+
+  appendGuessContainer(playerIndex, game) {
+    let name = game.generatedPlayers[playerIndex].name;
+    $('.round-three').append(`
+      <div class='player-guess-container'>
+        <p class='player-name'>${name} Take Your Guess</p>
+        <input class='player-guess-input' type='text' placeholder='Enter Guess'>
+        <button class='player-guess-button'>
+          Submit Guess
+        </button>
+      </div>
+      `);
+  },
+
+  guessContainerHandler(guessCount, guesses, game) {
   
+    $('.player-guess-button').click(() => {
+      const guess = $('.player-guess-input').val();
+      guessCount++;
+      if(guessCount <= 2) {
+        guesses.push(guess);
+        $('.player-name').text(game.generatedPlayers[guessCount].name);
+        $('.player-guess-input').val('');
+      } else {
+        guesses.push(guess);
+        $('.player-guess-container').remove();
+        game.currentRound.checkGuesses(guesses);
+        this.updateAllScores(game);
+        this.displayWinner(game);
+      }
+      
+
+    });
+  },
+
+  updateAllScores(game) {
+    $('.PP1-score').text(game.currentRound.players[0].score);
+    $('.PP2-score').text(game.currentRound.players[1].score);
+    $('.PP3-score').text(game.currentRound.players[2].score);
+  },
+
+  displayWinner(game) {
+    const winnerName = game.currentRound.findWinner().name;
+    $('.round-three').append(`
+      <p class='winner'>${winnerName} Wins!</p>
+    `);
+  }
 
 }
 
