@@ -40,7 +40,7 @@ const domUpdates = {
 
   populateDailyDouble(question, game) {
     $('.clue-info').remove();
-    $('.pop-up-clue').append(`<div class="clue-info">
+    $('.pop-up-clue').append(`<div class="clue-info daily-double">
     <h3> Daily Double </h3>
     <p class="clue-question">${question}</p>
     <input class="wager-input" type="text" placeholder="Type in Wager">
