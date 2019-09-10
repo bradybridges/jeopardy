@@ -29,7 +29,7 @@ const domUpdates = {
 
   populateClueInteraction(question, game) {
     $('.clue-info').remove();
-    $('.pop-up-clue').append(`<div class="clue-info">
+    $('.pop-up-clue').append(`<div class="clue-info clue-pop">
     <p class="clue-question">${question}</p>
     <input class="user-input" type="text" placeholder="Enter Guess">
     <button class="user-guess-btn">Submit Guess</button>
@@ -104,7 +104,7 @@ const domUpdates = {
     <p class="correct-gif-text">Correct!</p>
     <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(4000);
+    $('.clue-info').fadeOut(3000);
   },
 
   wrongGuess() {
@@ -113,7 +113,7 @@ const domUpdates = {
     <p class="correct-gif-text">Wrong!</p>
     <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(4000);
+    $('.clue-info').fadeOut(3000);
   },
 
   appendPlayers(game) {
@@ -191,7 +191,6 @@ const domUpdates = {
         </div>
     <button class="submit-wagers" disabled>Submit All Wagers</button>
   </div>`);
-    // this.checkRoundThreeWagerHelper(game);
     this.player1WageCheck(game);
     this.player2WageCheck(game);
     this.player3WageCheck(game);
@@ -239,16 +238,16 @@ const domUpdates = {
   wagerCheck(wager, playerIndex, game) {
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `p${playerIndex + 1}-wager-input`;
+      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(inputToSelect).val('')
       $(pToSelect).text('Valid Wager');
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
-      const pToSelect = `p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `p${playerIndex + 1}-wager-input`;
+      const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
+      // const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
       $(pToSelect).text('Invalid Wager');
-      $(inputToSelect).val('');
+      // $(inputToSelect).val('');
     }
     console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
