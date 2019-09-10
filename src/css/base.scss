@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'variables';
+@import 'keyframes';
 * {
   box-sizing: border-box;
 }
@@ -67,9 +68,19 @@ body {
         margin: 10px 0px;
         text-align: center;
         width: 100%;
-      }
     }
   }
+}
+
+.a-middle {
+  height: 106px;
+  animation: floatMiddle 4s ease-in-out infinite;
+}
+
+.a-side {
+  height: 100px;
+  animation: floatSide 4s ease-in-out infinite;
+}
 
 .player-one-label {
   color: $player-one-color;
@@ -286,7 +297,7 @@ label {
   border: 5px solid $player-two-color;
   display: flex;
   flex-direction: column;
-  height: 180px;
+  height: 250px;
   justify-content: space-evenly;
   margin: auto;
   min-width: 27%;
