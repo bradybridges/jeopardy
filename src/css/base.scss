@@ -202,7 +202,6 @@ label {
 }
 
 .clue-info {
-  // animation: clue-pop 1s;
   background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
   box-shadow: 0 4px 15px 0 rgba(42, 9, 57, 0.75);
   color: white;
@@ -216,6 +215,12 @@ label {
   top: 3%;
   width: 96%;
   z-index: 1;
+}
+
+.daily-double {
+  @extend .clue-info;
+  padding: 9%;
+  max-height: 82%;
 }
 
 .clue-pop {
@@ -252,6 +257,10 @@ label {
 
 .user-input {
   margin: 3% 0 3% 0;
+  border-radius: 5px;
+  border: 2px solid #2F0F52;
+  box-shadow: $hover-glow-guess;
+  
 }
 
 .user-guess-btn {
@@ -282,20 +291,20 @@ label {
 
 .wager-input {
   float: left;
+  box-shadow: $daily-double-glow;
+  border-radius: 5px;
 }
 
 .wager-btn {
   border: 2px solid lime;
   float: right;
+  @extend .start-game-btn;
+  background: #4D3977;
 }
 
 .user-guess-daily-double-btn {
-  background-color: white;
-  font-size: 1em;
-  height: 50px;
-  letter-spacing: 3px;
-  padding: 20px;
-  width: 100%;
+  @extend .start-game-btn;
+  width: 50%
 }
 
 .podium {
@@ -376,7 +385,7 @@ h3 {
   font-size: 3em;
   font-weight: 900;
   margin: 0px auto 35px;
-  text-shadow: 1px 1px 2px $player-one-color, 0 0 1em $player-two-color, 0 0 0.2em $player-three-color;
+  text-shadow: $daily-double-glow;
 }
 
 .player-guess-container {
