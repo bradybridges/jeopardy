@@ -157,11 +157,18 @@ label {
   padding: 5%;
 }
 
+.picked {
+  background-color: #3c0955;
+  border: none;
+  opacity: 0.8;
+  padding: 18px;
+}
+
 .grid-transition {
-  transition: all .1s ease-in-out;
-  transform: scale(1.1);
   background-color: black;
   cursor: pointer;
+  transform: scale(1.1);
+  transition: all .1s ease-in-out;
 }
 
 .clue-info {
@@ -183,12 +190,12 @@ label {
 
 @keyframes clue-info {
   0% {
-    transform: rotate(0deg) scale(0.1);
     opacity: 0;
+    transform: rotate(0deg) scale(0.1);
   }
   50% {
-    transform: rotate(360deg) scale(1.2);
     opacity: 1;
+    transform: rotate(360deg) scale(1.2);
   }
   100% {
     transform: rotate(360deg) scale(1);
@@ -222,8 +229,8 @@ label {
   display: flex;
   left: 13%;
   position: absolute;
-  width: 75%;
   margin-top:50%;
+  width: 75%;
 }
 
 .wager-input,
