@@ -156,6 +156,7 @@ label {
 
 .category {
   height: 100%;
+  
 }
 
 .grid-item {
@@ -182,7 +183,7 @@ label {
 }
 
 .clue-info {
-  animation: clue-info 1s;
+  // animation: clue-pop 1s;
   background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
   box-shadow: 0 4px 15px 0 rgba(42, 9, 57, 0.75);
   color: white;
@@ -198,7 +199,11 @@ label {
   z-index: 1;
 }
 
-@keyframes clue-info {
+.clue-pop {
+  animation: clue-pop 1s;
+}
+
+@keyframes clue-pop {
   0% {
     opacity: 0;
     transform: rotate(0deg) scale(0.1);
@@ -272,11 +277,36 @@ label {
   padding: 20px;
   width: 100%;
 }
- 
+
+.podium {
+  align-items: center;
+  background: #20094A;
+  border: 5px solid $player-two-color;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-evenly;
+  margin: auto;
+  min-width: 27%;
+}
+
+.player-one-stand {
+  border: 5px solid darken($player-one-color, 20%);
+}
+
+.player-two-stand {
+  border: 5px solid darken($player-two-color, 30%);
+}
+
+.player-three-stand {
+  border: 5px solid darken($player-three-color, 20%);
+}
 .player-one-stand,
 .PP1-name,
 .PP1-score {
   filter: drop-shadow(3px 6px 6px $player-one-color);
+  // filter: drop-shadow(6px 12px 12px $player-one-color);
+  
 }
 
 .player-two-stand,
@@ -291,18 +321,6 @@ label {
   filter: drop-shadow(3px 6px 6px $player-three-color);
 }
 
-.podium {
-  align-items: center;
-  background: #20094A;
-  border: 5px solid $player-two-color;
-  display: flex;
-  flex-direction: column;
-  height: 250px;
-  justify-content: space-evenly;
-  margin: auto;
-  min-width: 27%;
-}
-
 .name,
 .score {
   align-items: center;
@@ -313,5 +331,24 @@ label {
   height: 37px;
   justify-content: center;
   width: 72%;
+}
+
+.round-two {
+  background-image: url("../images/round-two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.round-three {
+  background-image: url("../images/game-fin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.category-third-round {
+  color: white;
+  z-index: 10;
 }
 

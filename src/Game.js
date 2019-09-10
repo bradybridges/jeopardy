@@ -1,11 +1,13 @@
 import data from '../src/data';
 import Round from '../src/Round';
+import Round3 from '../src/Round3';
 import Player from '../src/Player';
 import { fileURLToPath } from 'url';
 
 class Game {
   constructor(data, players) {
     this.data = data;
+    console.log(this.data)
     this.playersList = players;
     this.generatedPlayers;
     this.allCategories = this.data.categories;
@@ -23,13 +25,16 @@ class Game {
     this.generateCategories();
     this.selectClueOptionsForRound();
     this.generateRound();
-    console.log("GameInfo:", this.currentRound.clues)
   }
 
   newRound() {
-    this.generateCategories();
-    this.selectClueOptionsForRound();
-    this.generateRound();
+    if (this.roundCounter === 2) {
+      this.generateCategories();
+      this.selectClueOptionsForRound();
+      this.generateRound();
+    } else {
+      this.roundThreeHandler();
+    }
   }
 
   generatePlayers() {
@@ -122,27 +127,23 @@ class Game {
         };
       });
       this.currentRound = new Round(this, this.generatedPlayers, this.clues);
-    } else {
-      this.roundCounter++;
-    }
+    } 
   }
 
-  //Every time a user takes a guess fire this
-  //Would be better if only fired when user makes correct guess
-  //? if(this.round.currentClue.answer === $input.val() FIRE ?)
   nextRoundHandler() {
-    //this.isRoundOver() &&  <-- Add to if statement below later after making more mock data for each round
-    if (this.roundCounter <= 2) {
-      this.roundCounter++;
-      this.newRound();
-    } else {
-      this.roundCounter++;
-      //this.finalRound() or add to this.generateRound()
-      console.log('Time for round 3');
-    }
+    this.roundCounter++;
+    this.newRound();
   }
-  //if(this.isRoundOver() && this.roundCounter === 2) <-- Add to else block later
-  //Add else block to handle end of game
+
+  roundThreeHandler() {
+    const randomCategoryIndex = Math.floor(Math.random() * this.allCategories.length);
+    const category = this.allCategories[randomCategoryIndex];
+    const categoryClues = this.data.clues.filter(clue => clue.categoryId === category.id);
+    const randomClueIndex = Math.floor(Math.random() * categoryClues.length);
+    const randomClue = categoryClues[randomClueIndex];
+    this.clues = randomClue;
+    this.currentRound = new Round3(this, this.generatedPlayers, this.clues, category);
+  }
 
   isRoundOver() {
     return this.currentRound.isClueArrayEmpty() ? true : false;
