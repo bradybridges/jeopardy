@@ -68,6 +68,7 @@ body {
         margin: 10px 0px;
         text-align: center;
         width: 100%;
+        border-radius: 5px;
     }
   }
 }
@@ -89,6 +90,9 @@ body {
 
 .player-one-intake {
   border: 2px solid $player-one-color;
+    &:hover{
+      box-shadow: $hover-glow-p1;
+    } 
 }
 
 label {
@@ -102,6 +106,9 @@ label {
 
 .player-two-intake {
   border: 2px solid $player-two-color;
+  &:hover{
+    box-shadow: $hover-glow-p2;
+  } 
 }
 
 .player-three-label {
@@ -111,6 +118,9 @@ label {
 
 .player-three-intake {
   border: 2px solid $player-three-color;
+  &:hover{
+    box-shadow: $hover-glow-p3;
+  } 
 }
 
 .start-game-btn {
@@ -124,6 +134,15 @@ label {
   margin: 15px 13%; 
   width: 75%;
   z-index: 1;
+  box-shadow: 0px 6px 0px #12442c;
+  border-radius: 5px;
+  letter-spacing: 3px;
+  &:hover {
+    color: greenyellow;
+    text-shadow: 1px 1px 2px greenyellow, 0 0 2em whitesmoke, 0 0 0.4em limegreen;
+    box-shadow: 0px 6px 0px #12442c, 0 0 2em whitesmoke, 0 0 2em limegreen;
+
+  }
 }
 
 .round-one {

@@ -2,6 +2,9 @@ $player-one-color: rgb(181, 25, 129);
 $player-two-color: #5BE5FF;
 $player-three-color: #13F607;
 
+$hover-glow-p1: 0px 6px 0px $player-one-color, 0 0 2em whitesmoke, 0 0 1em rgb(200,24, 129);
+$hover-glow-p2: 0px 6px 0px $player-two-color, 0 0 2em whitesmoke, 0 0 1em rgb(10, 147, 172);
+$hover-glow-p3: 0px 6px 0px $player-three-color, 0 0 2em whitesmoke, 0 0 1em rgb(8, 104, 24);
 
 
 
