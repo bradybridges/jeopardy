@@ -192,42 +192,63 @@ const domUpdates = {
     <button class="submit-wagers" disabled>Submit All Wagers</button>
   </div>`);
     // this.checkRoundThreeWagerHelper(game);
-    this.player1WageCheck(game)
+    this.player1WageCheck(game);
+    this.player2WageCheck(game);
+    this.player3WageCheck(game);
   },
 
-  checkRoundThreeWagerHelper(game) {
-    $('.round-three').keyup( (e) => {
+  player1WageCheck(game) {
+    $('.p1-wager-input').keyup( (e) => {
       e.preventDefault()
       console.log("TARGET", e.currentTarget.classList)
       console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
       if (e.currentTarget.classList.contains('p1-wager-input')) {
         let wager = parseInt($('.p1-wager-input').val());
-        console.log("p1 wager", wager)
         this.wagerCheck(wager, 0, game);
+        console.log("p1 wager", wager)
       }
+    })
+  },
+
+  player2WageCheck(game) {
+    $('.p2-wager-input').keyup( (e) => {
+      e.preventDefault()
+      console.log("TARGET", e.currentTarget.classList)
+      console.log("TARGET2", e.currentTarget.classList.contains('p2-wager-input'))
       if (e.currentTarget.classList.contains('p2-wager-input')) {
         let wager = parseInt($('.p2-wager-input').val());
-        console.log("p2 wager", wager)
         this.wagerCheck(wager, 1, game);
+        console.log("p2 wager", wager)
       }
+    })
+  },
+
+  player3WageCheck(game) {
+    $('.p3-wager-input').keyup( (e) => {
+      e.preventDefault()
+      console.log("TARGET", e.currentTarget.classList)
+      console.log("TARGET3", e.currentTarget.classList.contains('p3-wager-input'))
       if (e.currentTarget.classList.contains('p3-wager-input')) {
         let wager = parseInt($('.p3-wager-input').val());
-        console.log("p3 wager", wager)
         this.wagerCheck(wager, 2, game);
+        console.log("p3 wager", wager)
       }
-      console.log("MADE IT LINE 211 checking inputs")
     })
-  }, 
-  
+  },
+
   wagerCheck(wager, playerIndex, game) {
-    if (game.currentRound.isGoodWager(wager, playerIndex)) {
+    if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
+      const inputToSelect = `p${playerIndex + 1}-wager-input`;
+      $(inputToSelect).val('')
       $(pToSelect).text('Valid Wager');
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
       const pToSelect = `p${playerIndex + 1}-wager-feedback`;
+      const inputToSelect = `p${playerIndex + 1}-wager-input`;
+      $(pToSelect).text('');
       $(pToSelect).text('Invalid Wager');
-      $('.wager-input').val('');
+      $(inputToSelect).val('');
     }
     console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
@@ -248,18 +269,7 @@ const domUpdates = {
     console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
-  player1WageCheck(game) {
-    $('.p1-wager-input').keyup( function(e) {
-      e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
-      if (e.currentTarget.classList.contains('p1-wager-input')) {
-        let wager = parseInt($('.p1-wager-input').val());
-        console.log("p1 wager", wager)
-        this.wagerCheck(wager, 0, game);
-      }
-    })
-  }
+ 
 
   
 

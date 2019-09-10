@@ -33,6 +33,7 @@ class Round3 extends Round {
   }
 
   isGoodWager(wager, playerIndex) {
+    console.log("PLayers:", this.players)
     let playerScore = this.players[playerIndex].score
     let boardHigh = this.currentClue.pointValue;
     let min = 5;
