@@ -293,10 +293,12 @@ const domUpdates = {
   },
 
   appendGuessContainer(playerIndex, game) {
-    let name = game.generatedPlayers[playerIndex].name;
+    const name = game.generatedPlayers[playerIndex].name;
+    const question = game.currentRound.currentClue.question;
     $('.round-three').append(`
       <div class='player-guess-container'>
-        <p class='player-name'>${name} Take Your Guess</p>
+        <p class='player-name'>${name}'s Turn</p>
+        <p class='final-question'>${question}</p>
         <input class='player-guess-input' type='text' placeholder='Enter Guess'>
         <button class='player-guess-button'>
           Submit Guess
@@ -312,7 +314,7 @@ const domUpdates = {
       guessCount++;
       if(guessCount <= 2) {
         guesses.push(guess);
-        $('.player-name').text(game.generatedPlayers[guessCount].name);
+        $('.player-name').text(`${game.generatedPlayers[guessCount].name}'s Turn`);
         $('.player-guess-input').val('');
       } else {
         guesses.push(guess);
@@ -335,7 +337,7 @@ const domUpdates = {
   displayWinner(game) {
     const winnerName = game.currentRound.findWinner().name;
     $('.round-three').append(`
-      <p class='winner'>${winnerName} Wins!</p>
+      <p class='winner'>${winnerName.toUpperCase()} Wins!</p>
     `);
   }
 
