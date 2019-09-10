@@ -9,7 +9,7 @@ class Round3 extends Round {
   }
 
   takeGuess(guess, wager) {
-    if (guess === this.currentClue.answer.toLowerCase()) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,'')) {
       this.handleGuess(true, wager);
       return true;
     } else {
