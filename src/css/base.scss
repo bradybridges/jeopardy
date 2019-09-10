@@ -1,5 +1,6 @@
 @import 'reset';
 @import 'variables';
+@import 'keyframes';
 * {
   box-sizing: border-box;
 }
@@ -18,40 +19,40 @@ body {
 .splash-container {
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
   display: flex;
+  height: 100vh;
   flex-direction: column;
     .moving-grid {
-      width: 100%;
       height: 100vh;
       position: absolute;
+      width: 100%;
         
     }
 }
 
 .splash-header {
-  z-index: 1;
   background: transparent;
-  display: flex;
-  justify-content: center;
   color:#166F45;
+  display: flex;
   font-size: 45px;
-  min-width: 350px;
+  justify-content: center;
   margin: 13px;
+  min-width: 350px;
+  z-index: 1;
 }
 
 .title {
-  text-shadow: 4px 0px 4px rgb(238, 238, 238);
   letter-spacing: 7px;
+  text-shadow: 4px 0px 4px rgb(238, 238, 238);
 }
 
 .intake-form {
   display: flex;
+  height: 70vh;
   justify-content: center;
+  margin: 0px auto 20px;
   max-width: 500px;
   min-width: 350px;
-  height: 70vh;
-  margin: 0px auto 20px;
 }
 
 .intake-form-inputs {
@@ -62,25 +63,41 @@ body {
     label {
       margin: 1.4%;
         input {
-        width: 100%;
         height:40px;
+        font-size: .9em;
         margin: 10px 0px;
         text-align: center;
-      }
+        width: 100%;
     }
   }
+}
+
+.a-middle {
+  height: 106px;
+  animation: floatMiddle 4s ease-in-out infinite;
+}
+
+.a-side {
+  height: 100px;
+  animation: floatSide 4s ease-in-out infinite;
+}
+
 .player-one-label {
-  z-index: 1;
   color: $player-one-color;
+  z-index: 1;
 }
 
 .player-one-intake {
   border: 2px solid $player-one-color;
 }
 
+label {
+  font-size: 1em;
+}
+
 .player-two-label {
-  z-index: 1;
   color: $player-two-color;
+  z-index: 1;
 }
 
 .player-two-intake {
@@ -88,8 +105,8 @@ body {
 }
 
 .player-three-label {
-  z-index: 1;
   color: $player-three-color;
+  z-index: 1;
 }
 
 .player-three-intake {
@@ -97,16 +114,16 @@ body {
 }
 
 .start-game-btn {
-  z-index: 1;
+  background: #166f45;
   border: 2px solid #0d3f27;
-  width: 75%;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 500;
   height: 45px;
   margin: 15px 13%; 
-  color: white;
-  background: #166f45;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 500;
-  font-size: 22px;
+  width: 75%;
+  z-index: 1;
 }
 
 .round-one {
@@ -117,48 +134,53 @@ body {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  // min-height: 25vh;
-  // max-width: 50%;
-  color: white;
-  border: 2px solid white;
-  position: absolute;
   align-items: center;
+  border: 2px solid white;
+  color: white;
+  display: grid;
+  font-size: 1.1em;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  margin-top: 3%;
+  position: absolute;
   text-align: center;
-  margin-top: 5%;
+  width: 96%;
 }
 
 .round-one-foreground {
-  z-index: 1;
   display: flex;
+  height: inherit;
   justify-content: center;
+  z-index: 1;
+}
+
+.category {
+  height: 100%;
 }
 
 .grid-item {
-  display: flex;
-  justify-content: center;
   align-items: center;
   border: solid 2px white;
-  min-width: 100%;
+  display: flex;
+  justify-content: center;
   min-height: 100%;
+  min-width: 100%;
   padding: 5%;
 }
 
 .clue-info {
   background: purple;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  left: 50%;
+  letter-spacing: 3px;
+  margin-left: -48%;
   min-height: 65%;
   padding: 11%;
-  letter-spacing: 3px;
   position: absolute;
   text-align: center;
-  top: 6%;
-  width: 100%;
+  top: 4%;
+  width: 96%;
+  z-index: 1;
 }
 
 .clue-question {
@@ -186,10 +208,51 @@ body {
 }
 
 .player-container {
+  bottom: 6%;
   display: flex;
-  justify-content: space-between;
+  left: 13%;
+  position: absolute;
   width: 75%;
   margin-top:50%;
+}
+
+.wager-input {
+  background-color: white;
+  float: left;
+  font-size: 1em;
+  height: 50px;
+  letter-spacing: 3px;
+  margin: 3% 0 3% 0;
+  padding: 20px;
+  text-align: center;
+  width: 47%;
+}
+
+.wager-btn {
+background-color: white;
+border: 2px solid lime;
+float: right;
+font-size: 1em;
+height: 50px;
+margin: 3% 0 3% 0;
+padding: 20px;
+width: 47%;
+}
+
+.user-guess-daily-double-btn {
+  background-color: white
+
+} 
+.player-one-stand {
+  filter: drop-shadow(4px 8px 6px $player-one-color);
+}
+
+.player-two-stand {
+  filter: drop-shadow(4px 8px 6px $player-two-color);
+}
+
+.player-three-stand {
+  filter: drop-shadow(4px 8px 6px $player-three-color);
 }
 
 .podium {
@@ -198,23 +261,22 @@ body {
   border: 5px solid $player-two-color;
   display: flex;
   flex-direction: column;
-  height: 157px;
+  height: 250px;
   justify-content: space-evenly;
   margin: auto;
-  width: 25%;
+  min-width: 27%;
 }
 
 .name,
 .score {
-  border: 1px solid black;
-  background: white;
-  height: 30px;
-  width: 60%;
-  border: 1px solid black;
-  background: white;
-  height: 30px;
-  display: flex;
   align-items: center;
+  background: white;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  filter: drop-shadow(1px 2px 6px hotpink);
+  height: 37px;
   justify-content: center;
+  width: 72%;
 }
 

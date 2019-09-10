@@ -4,7 +4,9 @@ const domUpdates = {
 
   transitionToFirstRound() {
     $('.splash-container').fadeOut(2000);
-    $('.round-one').fadeIn(6000);
+    $('.round-one').fadeIn(6000).prop('hidden', false);
+    $('.player-container').fadeIn(6000).removeAttr('style')
+
   },
 
   populateBoard(categories, clues) {
