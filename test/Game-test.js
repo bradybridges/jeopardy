@@ -3,7 +3,6 @@ import spies from 'chai-spies';
 import Game from '../src/Game';
 import data from '../src/data';
 import Round from '../src/Round';
-import Player from '../src/Player';
 
 const expect = chai.expect;
 chai.use(spies);

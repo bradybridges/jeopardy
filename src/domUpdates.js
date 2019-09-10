@@ -200,12 +200,10 @@ const domUpdates = {
   player1WageCheck(game) {
     $('.p1-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
+      
       if (e.currentTarget.classList.contains('p1-wager-input')) {
         let wager = parseInt($('.p1-wager-input').val());
         this.wagerCheck(wager, 0, game);
-        console.log("p1 wager", wager)
       }
     })
   },
@@ -213,12 +211,10 @@ const domUpdates = {
   player2WageCheck(game) {
     $('.p2-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET2", e.currentTarget.classList.contains('p2-wager-input'))
+    
       if (e.currentTarget.classList.contains('p2-wager-input')) {
         let wager = parseInt($('.p2-wager-input').val());
         this.wagerCheck(wager, 1, game);
-        console.log("p2 wager", wager)
       }
     })
   },
@@ -226,12 +222,10 @@ const domUpdates = {
   player3WageCheck(game) {
     $('.p3-wager-input').keyup( (e) => {
       e.preventDefault()
-      console.log("TARGET", e.currentTarget.classList)
-      console.log("TARGET3", e.currentTarget.classList.contains('p3-wager-input'))
+
       if (e.currentTarget.classList.contains('p3-wager-input')) {
         let wager = parseInt($('.p3-wager-input').val());
         this.wagerCheck(wager, 2, game);
-        console.log("p3 wager", wager)
       }
     })
   },
@@ -248,7 +242,6 @@ const domUpdates = {
       $(pToSelect).text('');
       $(pToSelect).text('Invalid Wager');
     }
-    console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
   },
 
@@ -264,7 +257,6 @@ const domUpdates = {
     } else {
       $('.submit-wagers').prop('disabled', true);
     }
-    console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
   submitWagersHandler(game) {
@@ -309,7 +301,7 @@ const domUpdates = {
     $('.player-guess-button').click(() => {
       const guess = $('.player-guess-input').val();
       guessCount++;
-      if(guessCount <= 2) {
+      if  (guessCount <= 2) {
         guesses.push(guess);
         $('.player-name').text(`${game.generatedPlayers[guessCount].name}'s Turn`);
         $('.player-guess-input').val('');

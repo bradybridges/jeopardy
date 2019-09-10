@@ -13,7 +13,7 @@ describe('Round', () => {
   beforeEach( () => {
     game = new Game(data, ['Kayla','Brady','Allison']);
     round = new Round(game, game.generatedPlayers, data2);
-    round.setCurrentClue(10, 100, 'Scorecard Report\" & \"Peter Jacobsen Plugged In\" are seen on the sports channel devoted to this');
+    round.setCurrentClue(10, 100, 'Scorecard Report" & "Peter Jacobsen Plugged In" are seen on the sports channel devoted to this');
   });
 
   it('Should be a function', () => {

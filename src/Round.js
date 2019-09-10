@@ -106,7 +106,7 @@ class Round {
   }
 
   findDailyDoubles() {
-    if(this.game.roundCounter <= 2) {
+    if  (this.game.roundCounter <= 2) {
       return this.clues.filter(clue => clue.dailyDouble === true);
     }
   }
