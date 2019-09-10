@@ -57,7 +57,7 @@ $(document).ready(function() {
       let cardAnswer = e.currentTarget.dataset.answer
       game.currentRound.setCurrentClue(cardAnswer);
       domUpdates. populateClueHelper(game.currentRound.currentClue.question, game);
-      $(e.currentTarget).wrap("<strike>");
+      $(e.currentTarget).text("");
       $(e.currentTarget).addClass('picked');
       $(e.currentTarget).off();
       $(e.currentTarget).closest('.grid-item').removeClass('grid-transition');
@@ -72,6 +72,10 @@ $(document).ready(function() {
       //also in card-info
       //possibly using a mix-in
     }
+  });
+
+  $('.reset-game-btn').click(() => {
+    document.location.reload();
   });
 
 

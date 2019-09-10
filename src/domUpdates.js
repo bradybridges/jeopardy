@@ -161,12 +161,12 @@ const domUpdates = {
   handleNextRoundGameBoard(game) {
     if (game.roundCounter === 2) {
       $('.round-one').remove();
-      $('.round-two').fadeIn(6000);
+      $('.round-two').fadeIn(400);
       this.populateBoard(game.currentCategories, game.clues);
     } else {
       $('.round-one').remove();
       $('.round-two').remove();
-      $('.round-three').fadeIn(6000);
+      $('.round-three').fadeIn(400);
       this.populateRoundThreeCategory(game.currentRound.category.name, game)
       console.log('Set Round3 Board');
     }
@@ -194,6 +194,7 @@ const domUpdates = {
     this.player1WageCheck(game);
     this.player2WageCheck(game);
     this.player3WageCheck(game);
+    this.submitWagersHandler(game);
   },
 
   player1WageCheck(game) {
@@ -239,15 +240,13 @@ const domUpdates = {
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
       const inputToSelect = `.p${playerIndex + 1}-wager-input`;
-      $(inputToSelect).val('')
       $(pToSelect).text('Valid Wager');
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      // const inputToSelect = `.p${playerIndex + 1}-wager-input`;
+      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
       $(pToSelect).text('Invalid Wager');
-      // $(inputToSelect).val('');
     }
     console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
@@ -268,13 +267,76 @@ const domUpdates = {
     console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
+  submitWagersHandler(game) {
+    $('.submit-wagers').click(() => {
+      const player1Wager = parseInt($('.p1-wager-input').val());
+      const player2Wager = parseInt($('.p2-wager-input').val());
+      const player3Wager = parseInt($('.p3-wager-input').val());
 
-  //isCurrentPlayer() {}
-  //return index game.currentPlayer[0] return true
-  //conditional to select player
- 
+      game.currentRound.setWagers([player1Wager, player2Wager, player3Wager]);
+      $('.category-third-round').fadeOut(500);
+      setTimeout(function() {
+        $('.category-third-round').remove();
+      }, 500);
+      this.playerGuessesHandler(game);
+  });
+ },
 
+  playerGuessesHandler(game) {
+    let guessCount = 0;
+    let guesses = [];
+    this.appendGuessContainer( 0, game);
+    this.guessContainerHandler(guessCount, guesses, game);
+  },
+
+  appendGuessContainer(playerIndex, game) {
+    const name = game.generatedPlayers[playerIndex].name;
+    const question = game.currentRound.currentClue.question;
+    $('.round-three').append(`
+      <div class='player-guess-container'>
+        <p class='player-name'>${name}'s Turn</p>
+        <p class='final-question'>${question}</p>
+        <input class='player-guess-input' type='text' placeholder='Enter Guess'>
+        <button class='player-guess-button'>
+          Submit Guess
+        </button>
+      </div>
+      `);
+  },
+
+  guessContainerHandler(guessCount, guesses, game) {
   
+    $('.player-guess-button').click(() => {
+      const guess = $('.player-guess-input').val();
+      guessCount++;
+      if(guessCount <= 2) {
+        guesses.push(guess);
+        $('.player-name').text(`${game.generatedPlayers[guessCount].name}'s Turn`);
+        $('.player-guess-input').val('');
+      } else {
+        guesses.push(guess);
+        $('.player-guess-container').remove();
+        game.currentRound.checkGuesses(guesses);
+        this.updateAllScores(game);
+        this.displayWinner(game);
+      }
+      
+
+    });
+  },
+
+  updateAllScores(game) {
+    $('.PP1-score').text(game.currentRound.players[0].score);
+    $('.PP2-score').text(game.currentRound.players[1].score);
+    $('.PP3-score').text(game.currentRound.players[2].score);
+  },
+
+  displayWinner(game) {
+    const winnerName = game.currentRound.findWinner().name;
+    $('.round-three').append(`
+      <p class='winner'>${winnerName.toUpperCase()} Wins!</p>
+    `);
+  }
 
 }
 

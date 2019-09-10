@@ -4,8 +4,6 @@
 * {
   box-sizing: border-box;
 }
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: pink;
 
 body {
   background-color: #000000;
@@ -26,7 +24,6 @@ body {
       height: 100vh;
       position: absolute;
       width: 100%;
-        
     }
 }
 
@@ -205,20 +202,6 @@ label {
   animation: clue-pop 1s;
 }
 
-@keyframes clue-pop {
-  0% {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.1);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(360deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-
 .clue-question {
   font-size: 2em;
 }
@@ -307,8 +290,6 @@ label {
 .PP1-name,
 .PP1-score {
   filter: drop-shadow(3px 6px 6px $player-one-color);
-  // filter: drop-shadow(6px 12px 12px $player-one-color);
-  
 }
 
 .player-two-stand,
@@ -352,5 +333,19 @@ label {
 .category-third-round {
   color: white;
   z-index: 10;
+}
+
+.reset-game-btn {
+  background-color: #2ad1bf;
+  border-radius: 30px;
+  border: 1px solid #072a26;
+  font-weight: 900;
+  height: 4%;
+  margin-top: 5px;
+  opacity: .7;
+  padding: 3px;
+  position: absolute;
+  right: 89%;
+  width: 9%;
 }
 
