@@ -268,3 +268,22 @@ width: 47%;
   width: 72%;
 }
 
+.round-two {
+  background-image: url("../images/round-two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.round-three {
+  background-image: url("../images/game-fin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.category-third-round {
+  color: white;
+  z-index: 10;
+}
+

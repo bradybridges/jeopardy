@@ -112,8 +112,10 @@ class Round {
   }
 
   isGoodWager(wager) {
+    let playerScore = this.currentPlayer.score;
+    let boardHigh = this.clues[this.clues.length - 1].pointValue;
     let min = 5;
-    let max = this.clues[this.clues.length - 1].pointValue;
+    let max = playerScore > boardHigh ? playerScore : boardHigh; 
     if (wager >= min && wager <= max) {
       return true;
     } else {

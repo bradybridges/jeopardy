@@ -7,13 +7,14 @@ import { fileURLToPath } from 'url';
 class Game {
   constructor(data, players) {
     this.data = data;
+    console.log(this.data)
     this.playersList = players;
     this.generatedPlayers;
     this.allCategories = this.data.categories;
     this.currentCategories;
     this.clues;
     this.winner;
-    this.roundCounter = 1;
+    this.roundCounter = 2;
     this.currentRound;
     this.startGame();
   }

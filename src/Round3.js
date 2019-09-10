@@ -31,6 +31,18 @@ class Round3 extends Round {
     this.players.sort((a,b) => a.score - b.score);
     return this.players[2];
   }
+
+  isGoodWager(wager, playerIndex) {
+    let playerScore = this.players[playerIndex].score
+    let boardHigh = this.currentClue.pointValue;
+    let min = 5;
+    let max = playerScore > boardHigh ? playerScore : boardHigh; 
+    if (wager >= min && wager <= max) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default Round3;

@@ -104,7 +104,7 @@ const domUpdates = {
     <p class="correct-gif-text">Correct!</p>
     <img src="../images/correct-guess.gif" class="correct-guess">
     </div>`);
-    $('.clue-info').fadeOut(4000);
+    $('.clue-info').fadeOut(3000);
   },
 
   wrongGuess() {
@@ -113,7 +113,7 @@ const domUpdates = {
     <p class="correct-gif-text">Wrong!</p>
     <img src="../images/wrong-guess.gif" class="moving-grid">
     </div> `);
-    $('.clue-info').fadeOut(4000);
+    $('.clue-info').fadeOut(3000);
   },
 
   appendPlayers(game) {
@@ -164,13 +164,105 @@ const domUpdates = {
       $('.round-two').fadeIn(6000);
       this.populateBoard(game.currentCategories, game.clues);
     } else {
+      $('.round-one').remove();
       $('.round-two').remove();
+      $('.round-three').fadeIn(6000);
+      this.populateRoundThreeCategory(game.currentRound.category.name, game)
       console.log('Set Round3 Board');
     }
   },
 
+  populateRoundThreeCategory(question, game) {
+    $('.round-three').append(`<div class="category-third-round">
+    <p> Category:</p>
+    <p class="clue-question">${question}</p>
+    <p> Please Enter Your Wagers</p>
+    <div class="p1-wager">
+      <p class="p1-wager-feedback"></p>
+      <input class="p1-wager-input">
+    </div>
+    <div class="p2-wager">
+        <p class="p2-wager-feedback"></p>
+        <input class="p2-wager-input">
+      </div>
+      <div class="p3-wager">
+          <p class="p3-wager-feedback"></p>
+          <input class="p3-wager-input" type="text">
+        </div>
+    <button class="submit-wagers" disabled>Submit All Wagers</button>
+  </div>`);
+    // this.checkRoundThreeWagerHelper(game);
+    this.player1WageCheck(game)
+  },
 
+  checkRoundThreeWagerHelper(game) {
+    $('.round-three').keyup( (e) => {
+      e.preventDefault()
+      console.log("TARGET", e.currentTarget.classList)
+      console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
+      if (e.currentTarget.classList.contains('p1-wager-input')) {
+        let wager = parseInt($('.p1-wager-input').val());
+        console.log("p1 wager", wager)
+        this.wagerCheck(wager, 0, game);
+      }
+      if (e.currentTarget.classList.contains('p2-wager-input')) {
+        let wager = parseInt($('.p2-wager-input').val());
+        console.log("p2 wager", wager)
+        this.wagerCheck(wager, 1, game);
+      }
+      if (e.currentTarget.classList.contains('p3-wager-input')) {
+        let wager = parseInt($('.p3-wager-input').val());
+        console.log("p3 wager", wager)
+        this.wagerCheck(wager, 2, game);
+      }
+      console.log("MADE IT LINE 211 checking inputs")
+    })
+  }, 
+  
+  wagerCheck(wager, playerIndex, game) {
+    if (game.currentRound.isGoodWager(wager, playerIndex)) {
+      const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
+      $(pToSelect).text('Valid Wager');
+      $('.user-guess-daily-double-btn').prop("disabled", false);
+    } else {
+      const pToSelect = `p${playerIndex + 1}-wager-feedback`;
+      $(pToSelect).text('Invalid Wager');
+      $('.wager-input').val('');
+    }
+    console.log("MADE IT LINE 225 checking wagers")
+    this.checkAllWagers();
+  },
 
-};
+  checkAllWagers() {
+    let playerOneFeedback = $('.p1-wager-feedback').text();
+    let playerTwoFeedback = $('.p2-wager-feedback').text();
+    let playerThreeFeedback = $('.p3-wager-feedback').text();
+    let playersFeedback = [playerOneFeedback, playerTwoFeedback, playerThreeFeedback];
+  
+
+    if (playersFeedback.filter(feedback => feedback === 'Valid Wager').length === 3) {
+      $('.submit-wagers').prop('disabled', false);
+    } else {
+      $('.submit-wagers').prop('disabled', true);
+    }
+    console.log("MADE IT LINE 241 checked validity of wagers")
+  },
+
+  player1WageCheck(game) {
+    $('.p1-wager-input').keyup( function(e) {
+      e.preventDefault()
+      console.log("TARGET", e.currentTarget.classList)
+      console.log("TARGET111", e.currentTarget.classList.contains('p1-wager-input'))
+      if (e.currentTarget.classList.contains('p1-wager-input')) {
+        let wager = parseInt($('.p1-wager-input').val());
+        console.log("p1 wager", wager)
+        this.wagerCheck(wager, 0, game);
+      }
+    })
+  }
+
+  
+
+}
 
 export default domUpdates;
