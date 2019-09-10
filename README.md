@@ -1,5 +1,5 @@
-# Webpack Starter Kit
-View the live page [here.](./src/index.html);
+# Mod 2 Jeopardy
+View the live page [here.](./src/index.html)
 
 ## Table of contents
 * [Objective](#Objective)
