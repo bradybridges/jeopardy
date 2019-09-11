@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Webpack Starter Kit</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:500,900&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <div class="splash-container">
+      <header class="splash-header"> <h1 class="title"> Jeopardy </h1>
+      </header>
+      <img src="../images/splash.gif" class="moving-grid">
+      <form class="intake-form">
+        <div class="intake-form-inputs">
+        <label class ="player-one-label" id="player-intake"> Player One 
+        <input class="player-one-intake" placeholder="Player One Name" type="text" maxlength="20">
+        </label>
+        <label class ="player-two-label" id="player-intake"> Player Two 
+        <input class="player-two-intake" placeholder="Player Two Name" type="text" maxlength="20">
+      </label>
+      <label class ="player-three-label" id="player-intake"> Player Three 
+        <input class="player-three-intake" placeholder="Player Three Name" type="text" maxlength="20">
+      </label>
+        <button class="start-game-btn" disabled>Start Game</button>
+      </div>
+      </form>
+    </div>
+    <div class="round-one" hidden>
+      <P class="round-title">Round One</P>
+      <p class='current-player-name'></p>
+      <button class="reset-game-btn" type="reset" value="reset">Reset Game</button>
+      <div class="round-one-foreground"> 
+        <div class="grid-container">
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>  
+      </div>
+    </div>
+    <div class="round-two" style="display:none">
+        <P class="round-title">Round Two</P>
+        <p class='current-player-name'></p>
+        <button class="reset-game-btn" type="reset" value="reset">Reset Game</button>
+      <div class="round-one-foreground"> 
+        <div class="grid-container">
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item category"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+        </div>  
+      </div>
+    </div>
+
+    <div class="round-three" style="display:none">
+        <div class="round-3-info">
+        <P class="round-title">Round Three</P>
+        <button class="reset-game-btn" type="reset" value="reset">Reset Game</button>
+        </div>
+      </div>
+    
+    <div class="pop-up-clue" hidden></div>
+    
+    <div class="player-container" style="display: none">
+      <div class="player-one-stand podium">
+        <img src="./images/player-1-avatar.png" class="avatar-1 a-side" >
+        <p class="PP1-name name"><span class="PP1-name"></span></p>
+        <p  class="PP1-score score"></p>
+      </div>
+      <div class="player-two-stand podium">
+        <img src="./images/player-2-avatar.png" class="avatar-2 a-middle" >
+        <p class="PP2-name name"></p>
+        <p class="PP2-score score"></p>
+      </div>   
+      <div class="player-three-stand podium">
+        <img src="./images/player-3-avatar.png" class="avatar-3 a-side">
+        <p class="PP3-name name"></p>
+        <p class="PP3-score score"></p>
+      </div>
+    </div>
+  
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
