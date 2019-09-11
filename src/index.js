@@ -57,7 +57,7 @@ $(document).ready(function() {
       let cardAnswer = e.currentTarget.dataset.answer
       game.currentRound.setCurrentClue(cardAnswer);
       domUpdates. populateClueHelper(game.currentRound.currentClue.question, game);
-      $(e.currentTarget).text('');
+      $(e.currentTarget).text("");
       $(e.currentTarget).addClass('picked');
       $(e.currentTarget).off();
       $(e.currentTarget).closest('.grid-item').removeClass('grid-transition');
@@ -67,7 +67,15 @@ $(document).ready(function() {
   $('.grid-item').hover((e) => {
     if (!e.currentTarget.classList.contains('category') && !e.currentTarget.classList.contains('picked')) {
       $(e.currentTarget).closest('.grid-item').toggleClass('grid-transition');
+      //logic to use hover for each player color
+      //if player one, return true
+      //also in card-info
+      //possibly using a mix-in
     }
+  });
+
+  $('.reset-game-btn').click(() => {
+    document.location.reload();
   });
 
 
