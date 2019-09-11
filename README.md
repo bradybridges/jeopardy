@@ -2,10 +2,10 @@
 View the live page [here.](./src/index.html);
 
 # Developers
-Brady Bridges [GitHub](https://github.com/bradybridges)
-Kayla Lawson [GitHub](https://github.com/KaylaLawson)
-Lacy Rudd [GitHub](https://github.com/dawnlunacy?tab=repositories)
-Allison Wagner [GitHub](https://github.com/allisonjw)
+* Brady Bridges [GitHub Page](https://github.com/bradybridges)
+* Kayla Lawson [GitHub Page](https://github.com/KaylaLawson)
+* Lacy Rudd [GitHub Page](https://github.com/dawnlunacy?tab=repositories)
+* Allison Wagner [GitHub Page](https://github.com/allisonjw)
 
 ## Table of contents
 * [Objective](#Objective)
