@@ -41,7 +41,7 @@ class Round {
   }
        
   takeGuess(guess) {
-    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,'')) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '')) {
       this.handleGuess(true);
       return true;
     } else {
@@ -51,7 +51,7 @@ class Round {
   }
 
   takeDailyDoubleGuess(guess, wager) {
-    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,'')) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '')) {
       this.handleDailyDoubleGuess(true, wager);
       return true;
     } else {
@@ -106,7 +106,7 @@ class Round {
   }
 
   findDailyDoubles() {
-    if  (this.game.roundCounter <= 2) {
+    if (this.game.roundCounter <= 2) {
       return this.clues.filter(clue => clue.dailyDouble === true);
     }
   }

@@ -9,7 +9,7 @@ class Round3 extends Round {
   }
 
   takeGuess(guess, wager) {
-    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g,'')) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g ,'')) {
       this.handleGuess(true, wager);
       return true;
     } else {
@@ -28,7 +28,7 @@ class Round3 extends Round {
   }
 
   findWinner() {
-    this.players.sort((a,b) => a.score - b.score);
+    this.players.sort((a, b) => a.score - b.score);
     return this.players[2];
   }
 
@@ -51,7 +51,7 @@ class Round3 extends Round {
   checkGuesses(guessArray) {
     let index = 0;
     guessArray.forEach(guess => {
-      if(guess === this.currentClue.answer) {
+      if (guess === this.currentClue.answer) {
         this.players[index].incrementScore(this.wagers[index]);
         index++;
       } else {

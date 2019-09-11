@@ -1,8 +1,6 @@
-import data from '../src/data';
 import Round from '../src/Round';
 import Round3 from '../src/Round3';
 import Player from '../src/Player';
-import { fileURLToPath } from 'url';
 
 class Game {
   constructor(data, players) {
