@@ -4,8 +4,6 @@
 * {
   box-sizing: border-box;
 }
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: pink;
 
 body {
   background-color: #000000;
@@ -26,7 +24,6 @@ body {
       height: 100vh;
       position: absolute;
       width: 100%;
-        
     }
 }
 
@@ -141,7 +138,7 @@ label {
   font-size: 1.1em;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  margin-top: 3%;
+  margin-top: 1%;
   position: absolute;
   text-align: center;
   width: 96%;
@@ -156,7 +153,7 @@ label {
 
 .category {
   height: 100%;
-  
+
 }
 
 .grid-item {
@@ -176,14 +173,13 @@ label {
 }
 
 .grid-transition {
-  background-color: black;
+  background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
   cursor: pointer;
   transform: scale(1.1);
   transition: all .1s ease-in-out;
 }
 
 .clue-info {
-  // animation: clue-pop 1s;
   background-image: linear-gradient(to right, #463a74, #852D91, #580a48, #26afa8);
   box-shadow: 0 4px 15px 0 rgba(42, 9, 57, 0.75);
   color: white;
@@ -201,20 +197,6 @@ label {
 
 .clue-pop {
   animation: clue-pop 1s;
-}
-
-@keyframes clue-pop {
-  0% {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.1);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(360deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
 }
 
 .clue-question {
@@ -305,8 +287,6 @@ label {
 .PP1-name,
 .PP1-score {
   filter: drop-shadow(3px 6px 6px $player-one-color);
-  // filter: drop-shadow(6px 12px 12px $player-one-color);
-  
 }
 
 .player-two-stand,
@@ -391,5 +371,41 @@ label {
 
 .last-page-question {
   font-size: 1.5rem; 
+}
+
+.round-title {
+  color: white;
+  display: inline-block;
+  font-size: 2em;
+  margin: 2% 0 0 3%;
+}
+
+.reset-game-btn {
+  background-color: #e82d7f;
+  border-radius: 30px;
+  filter: drop-shadow(3px 6px 6px #e82d7f);
+  font-weight: 900;
+  height: 15%;
+  position: absolute;
+  left: 101%;
+  bottom: 249%;
+  width: 12%;
+}
+
+h3 {
+  font-size: 3em;
+  font-weight: 900;
+  margin: 0px auto 35px;
+  text-shadow: 1px 1px 2px $player-one-color, 0 0 1em $player-two-color, 0 0 0.2em $player-three-color;
+}
+
+.player-guess-container {
+  color: white;
+}
+
+.winner {
+  color: white;
+  font-weight: 900;
+  font-size: 5em;
 }
 
