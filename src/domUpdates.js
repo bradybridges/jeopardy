@@ -267,10 +267,7 @@ const domUpdates = {
       const player3Wager = parseInt($('.p3-wager-input').val());
 
       game.currentRound.setWagers([player1Wager, player2Wager, player3Wager]);
-      $('.category-third-round').fadeOut(500);
-      setTimeout(function() {
-        $('.category-third-round').remove();
-      }, 500);
+      $('.category-third-round').remove();
       this.playerGuessesHandler(game);
     });
   },

@@ -122,18 +122,18 @@ label {
 
 .start-game-btn {
   background: #166f45;
+  border-radius: 5px;
   border: 2px solid #0d3f27;
+  box-shadow: 0px 6px 0px #12442c;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: 22px;
   font-weight: 500;
   height: 45px;
+  letter-spacing: 3px;
   margin: 15px 13%; 
   width: 75%;
   z-index: 1;
-  box-shadow: 0px 6px 0px #12442c;
-  border-radius: 5px;
-  letter-spacing: 3px;
   &:hover {
     color: greenyellow;
     text-shadow: 1px 1px 2px greenyellow, 0 0 2em whitesmoke, 0 0 0.4em limegreen;
@@ -350,17 +350,17 @@ label {
 }
 
 .round-three {
-  display: flex;
-  padding-top: 20px;
-  padding-left: 10px;
-  justify-content: center;
-  text-align: center;
   background-image: url("../images/game-fin.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  display: flex;
   flex-direction: column;
+  height: 100vh;
+  justify-content: center;
   justify-content: flex-start;
+  padding-left: 10px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .round-3-style {
@@ -368,11 +368,11 @@ label {
 }
 
 .p1-wager-input {
-  text-align: center;
-  height: 40px;
-  width: 50%;
-  font-size: 1em;
   border-radius: 5px;
+  font-size: 1em;
+  height: 40px;
+  text-align: center;
+  width: 50%;
     &:hover {
       box-shadow: $hover-glow-p1;
     }
@@ -392,16 +392,15 @@ label {
 
 .category-third-round {
   color: white;
-  // z-index: 10;
   font-size: 1.5em;
 }
 
 .player-guess-container {
-  margin-top: 10%;
-  width: 65%;
+  color: white;
   display: flex;
   flex-direction: column;
-  color: white;
+  margin-top: 10%;
+  width: 65%;
 }
 
 .last-page-name{
@@ -409,12 +408,12 @@ label {
 }
 
 .last-page-input {
-  text-align: center;
+  border-radius: 5px;
+  box-shadow: $daily-double-glow;
+  font-size: 1em;
   height: 60px;
   margin-bottom: 20px;
-  border-radius: 5px;
-  font-size: 1em;
-  box-shadow: $daily-double-glow;
+  text-align: center;
 }
 
 .last-page-question {
@@ -433,11 +432,11 @@ label {
   background-color: #e82d7f;
   border-radius: 30px;
   filter: drop-shadow(3px 6px 6px #e82d7f);
+  float: right;
   font-weight: 900;
   height: 4%;
-  width: 12%;
-  float: right;
   margin: 12px 16px 0 0;
+  width: 12%;
 }
 
 h3 {
@@ -460,8 +459,8 @@ h3 {
 
 .round-3-info {
   display: flex;
-  justify-content: space-between;
   height: 3%;
+  justify-content: space-between;
   align-items: center;
     .reset-game-btn {
       height: 40px;
@@ -471,8 +470,8 @@ h3 {
 .submit-wagers {
   @extend .wager-btn;
   float: none;
-  width: 42%;
   margin: auto;
+  width: 42%;
 }
 
 .player-guess-button {

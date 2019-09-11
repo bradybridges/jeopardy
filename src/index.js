@@ -61,10 +61,6 @@ $(document).ready(function() {
   $('.grid-item').hover((e) => {
     if (!e.currentTarget.classList.contains('category') && !e.currentTarget.classList.contains('picked')) {
       $(e.currentTarget).closest('.grid-item').toggleClass('grid-transition');
-      //logic to use hover for each player color
-      //if player one, return true
-      //also in card-info
-      //possibly using a mix-in
     }
   });
 
