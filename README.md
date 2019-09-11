@@ -1,5 +1,5 @@
 # Game Time - Jeopardy
-View the live page [here.](./src/index.html);
+View the live page [here.](https://bradybridges.github.io/jeopardy/)
 
 # Developers
 * Brady Bridges [GitHub Page](https://github.com/bradybridges)
