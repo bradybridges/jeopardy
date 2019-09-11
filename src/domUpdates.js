@@ -65,6 +65,7 @@ const domUpdates = {
         this.wrongGuess();
       }
       this.updateScore(playerGuessing, game);
+      this.displayCurrentPlayerName(game);
     })
   },
   checkDailyDoubleWagerHelper(game) {
@@ -95,6 +96,7 @@ const domUpdates = {
         this.wrongGuess();
       }
       this.updateScore(playerGuessing, game);
+      this.displayCurrentPlayerName(game);
     })
   },
 
@@ -121,6 +123,8 @@ const domUpdates = {
     this.playerOneAppend(game.generatedPlayers[0]);
     this.playerTwoAppend(game.generatedPlayers[1]);
     this.playerThreeAppend(game.generatedPlayers[2]);
+    this.displayCurrentPlayerName(game);
+
   },
 
   playerOneAppend(player1) {
@@ -234,12 +238,10 @@ const domUpdates = {
     const name = game.generatedPlayers[playerIndex].name;
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text(`${name} Valid Wager`);
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
       $(pToSelect).text( `${name} Invalid Wager`);
     }
@@ -333,6 +335,10 @@ const domUpdates = {
 
   findCurrentPlayerName(game) {
     return game.currentRound.currentPlayer.name;
+  },
+
+  displayCurrentPlayerName(game) {
+    $('.current-player-name').text(`${this.findCurrentPlayerName(game)}'s Turn`)
   }
 
 }
