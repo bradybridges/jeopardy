@@ -11,7 +11,7 @@ class Game {
     this.currentCategories;
     this.clues;
     this.winner;
-    this.roundCounter = 2;
+    this.roundCounter = 1;
     this.currentRound;
     this.startGame();
   }
