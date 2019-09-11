@@ -21,3 +21,17 @@
 		transform: translatey(0px);
 	}
 }
+
+@keyframes clue-pop {
+	0% {
+	  opacity: 0;
+	  transform: rotate(0deg) scale(0.1);
+	}
+	50% {
+	  opacity: 1;
+	  transform: rotate(360deg) scale(1.2);
+	}
+	100% {
+	  transform: rotate(360deg) scale(1);
+	}
+  }
