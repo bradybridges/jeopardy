@@ -142,7 +142,7 @@ label {
 }
 
 .round-one {
-  background-image: url("../images/round-one.jpg");
+  background-image: url("./images/round-one.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -343,14 +343,14 @@ label {
 }
 
 .round-two {
-  background-image: url("../images/round-two.jpg");
+  background-image: url("./images/round-two.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 
 .round-three {
-  background-image: url("../images/game-fin.jpg");
+  background-image: url("./images/game-fin.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
