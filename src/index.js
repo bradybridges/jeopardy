@@ -8,17 +8,12 @@ import './images/wrong-guess.gif';
 import './images/host.gif';
 import './images/round-one.jpg';
 import './images/round-two.jpg';
-// import './images/round-three.jpeg';
 import './images/game-fin.jpg';
 import './images/player-1-avatar.png';
 import './images/player-2-avatar.png';
 import './images/player-3-avatar.png';
 
-
-
-
 import Game from './Game';
-
 import domUpdates from './domUpdates.js'
 
 let game;
@@ -30,7 +25,6 @@ fetch("https://fe-apps.herokuapp.com/api/v1/gametime/1903/jeopardy/data")
   .catch(error => console.log(error));
 
 $(document).ready(function() {
-  console.log("MOOOOOOSES")
   
   $('.intake-form-inputs').keyup(function() {
     if ($('.player-one-intake').val() !== '' && $('.player-two-intake').val() !== '' && $('.player-three-intake').val() !== '') {
@@ -67,10 +61,6 @@ $(document).ready(function() {
   $('.grid-item').hover((e) => {
     if (!e.currentTarget.classList.contains('category') && !e.currentTarget.classList.contains('picked')) {
       $(e.currentTarget).closest('.grid-item').toggleClass('grid-transition');
-      //logic to use hover for each player color
-      //if player one, return true
-      //also in card-info
-      //possibly using a mix-in
     }
   });
 

@@ -65,6 +65,7 @@ const domUpdates = {
         this.wrongGuess();
       }
       this.updateScore(playerGuessing, game);
+      this.displayCurrentPlayerName(game);
     })
   },
   checkDailyDoubleWagerHelper(game) {
@@ -95,6 +96,7 @@ const domUpdates = {
         this.wrongGuess();
       }
       this.updateScore(playerGuessing, game);
+      this.displayCurrentPlayerName(game);
     })
   },
 
@@ -121,6 +123,8 @@ const domUpdates = {
     this.playerOneAppend(game.generatedPlayers[0]);
     this.playerTwoAppend(game.generatedPlayers[1]);
     this.playerThreeAppend(game.generatedPlayers[2]);
+    this.displayCurrentPlayerName(game);
+
   },
 
   playerOneAppend(player1) {
@@ -169,7 +173,6 @@ const domUpdates = {
       $('.round-two').remove();
       $('.round-three').fadeIn(400);
       this.populateRoundThreeCategory(game.currentRound.category.name, game)
-      console.log('Set Round3 Board');
     }
   },
 
@@ -201,10 +204,10 @@ const domUpdates = {
   player1WageCheck(game) {
     $('.p1-wager-input').keyup( (e) => {
       e.preventDefault()
+
       if (e.currentTarget.classList.contains('p1-wager-input')) {
         let wager = parseInt($('.p1-wager-input').val());
         this.wagerCheck(wager, 0, game);
-        console.log("p1 wager", wager)
       }
     })
   },
@@ -212,10 +215,10 @@ const domUpdates = {
   player2WageCheck(game) {
     $('.p2-wager-input').keyup( (e) => {
       e.preventDefault()
+
       if (e.currentTarget.classList.contains('p2-wager-input')) {
         let wager = parseInt($('.p2-wager-input').val());
         this.wagerCheck(wager, 1, game);
-        console.log("p2 wager", wager)
       }
     })
   },
@@ -223,10 +226,10 @@ const domUpdates = {
   player3WageCheck(game) {
     $('.p3-wager-input').keyup( (e) => {
       e.preventDefault()
+
       if (e.currentTarget.classList.contains('p3-wager-input')) {
         let wager = parseInt($('.p3-wager-input').val());
         this.wagerCheck(wager, 2, game);
-        console.log("p3 wager", wager)
       }
     })
   },
@@ -235,16 +238,13 @@ const domUpdates = {
     const name = game.generatedPlayers[playerIndex].name;
     if (game.currentRound.isGoodWager(wager, playerIndex) === true) {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text(`${name} Valid Wager`);
       $('.user-guess-daily-double-btn').prop("disabled", false);
     } else {
       const pToSelect = `.p${playerIndex + 1}-wager-feedback`;
-      const inputToSelect = `.p${playerIndex + 1}-wager-input`;
       $(pToSelect).text('');
       $(pToSelect).text( `${name} Invalid Wager`);
     }
-    console.log("MADE IT LINE 225 checking wagers")
     this.checkAllWagers();
   },
 
@@ -260,7 +260,6 @@ const domUpdates = {
     } else {
       $('.submit-wagers').prop('disabled', true);
     }
-    console.log("MADE IT LINE 241 checked validity of wagers")
   },
 
   submitWagersHandler(game) {
@@ -270,13 +269,10 @@ const domUpdates = {
       const player3Wager = parseInt($('.p3-wager-input').val());
 
       game.currentRound.setWagers([player1Wager, player2Wager, player3Wager]);
-      $('.category-third-round').fadeOut(500);
-      setTimeout(function() {
-        $('.category-third-round').remove();
-      }, 500);
+      $('.category-third-round').remove();
       this.playerGuessesHandler(game);
-  });
- },
+    });
+  },
 
   playerGuessesHandler(game) {
     let guessCount = 0;
@@ -288,7 +284,6 @@ const domUpdates = {
   appendGuessContainer(playerIndex, game) {
     const name = game.generatedPlayers[playerIndex].name;
     const question = game.currentRound.currentClue.question;
-    console.log(name);
     $('.round-three').append(`
       <div class='player-guess-container'>
         <p class='player-name last-page-name'>${name}'s Turn</p>
@@ -306,7 +301,8 @@ const domUpdates = {
     $('.player-guess-button').click(() => {
       const guess = $('.player-guess-input').val();
       guessCount++;
-      if (guessCount <= 2) {
+
+      if  (guessCount <= 2) {
         guesses.push(guess);
         $('.player-name').text(`${game.generatedPlayers[guessCount].name}'s Turn`);
         $('.player-guess-input').val('');
@@ -335,12 +331,14 @@ const domUpdates = {
     $('.round-three').append(`
       <p class='winner'>${winnerName.toUpperCase()} Wins!</p>
     `);
-    console.log("winner", winnerName)
   },
 
   findCurrentPlayerName(game) {
-    console.log("CURRENT PLAYER NAME", game.currentRound.currentPlayer.name)
     return game.currentRound.currentPlayer.name;
+  },
+
+  displayCurrentPlayerName(game) {
+    $('.current-player-name').text(`${this.findCurrentPlayerName(game)}'s Turn`)
   }
 
 }

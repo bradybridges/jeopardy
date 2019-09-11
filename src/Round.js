@@ -7,7 +7,6 @@ class Round {
     this.currentGuess;
     this.currentClue;
     this.dailyDouble();
-    console.log("daily double", this.findDailyDoubles())
   }
 
   dailyDouble() {
@@ -42,7 +41,7 @@ class Round {
   }
        
   takeGuess(guess) {
-    if (guess === this.currentClue.answer.toLowerCase()) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '')) {
       this.handleGuess(true);
       return true;
     } else {
@@ -52,7 +51,7 @@ class Round {
   }
 
   takeDailyDoubleGuess(guess, wager) {
-    if (guess === this.currentClue.answer.toLowerCase()) {
+    if (guess === this.currentClue.answer.toLowerCase().replace(/[^a-zA-Z0-9\s]/g, '')) {
       this.handleDailyDoubleGuess(true, wager);
       return true;
     } else {

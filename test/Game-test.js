@@ -3,7 +3,6 @@ import spies from 'chai-spies';
 import Game from '../src/Game';
 import data from '../src/data';
 import Round from '../src/Round';
-import Player from '../src/Player';
 
 const expect = chai.expect;
 chai.use(spies);
@@ -64,6 +63,13 @@ describe('Game', () => {
   
   });
 
+  describe('generateClues', () => {
+    it('should generate clues based on category and round', () => {
+      // console.log('Game clues: ', game.clues);
+      expect(game.clues.length).to.equal(16);
+    });
+  });
+
   describe('nextRoundHandler', () => {
     it('round counter should increment with each new round', () => {
     expect(game.roundCounter).to.equal(1);
@@ -87,16 +93,6 @@ describe('Game', () => {
       expect(game.currentCategories.length).to.equal(4);
     });
   });
-
-  describe('generateClues', () => {
-    it('should generate clues based on category and round', () => {
-      expect(game.clues.length).to.equal(16);
-    });
-  });
-
-
-  
-
 
 
 });
