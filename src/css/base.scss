@@ -479,3 +479,11 @@ h3 {
   @extend .start-game-btn;
   height: 50px;
 }
+
+.current-player-name {
+  font-weight: 500;
+  font-size:1.5em;
+  color: whitesmoke;
+  margin: 0% 18%;
+  display: inline-block;
+}
