@@ -1,5 +1,11 @@
-# Webpack Starter Kit
-View the live page [here.](./src/index.html);
+# Game Time - Jeopardy
+View the live page [here.](https://bradybridges.github.io/jeopardy/)
+
+# Developers
+* Brady Bridges [GitHub Page](https://github.com/bradybridges)
+* Kayla Lawson [GitHub Page](https://github.com/KaylaLawson)
+* Lacy Rudd [GitHub Page](https://github.com/dawnlunacy?tab=repositories)
+* Allison Wagner [GitHub Page](https://github.com/allisonjw)
 
 ## Table of contents
 * [Objective](#Objective)
