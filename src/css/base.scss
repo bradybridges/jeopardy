@@ -65,6 +65,7 @@ body {
         margin: 10px 0px;
         text-align: center;
         width: 100%;
+        border-radius: 5px;
     }
   }
 }
@@ -86,6 +87,9 @@ body {
 
 .player-one-intake {
   border: 2px solid $player-one-color;
+    &:hover{
+      box-shadow: $hover-glow-p1;
+    } 
 }
 
 label {
@@ -99,6 +103,9 @@ label {
 
 .player-two-intake {
   border: 2px solid $player-two-color;
+  &:hover{
+    box-shadow: $hover-glow-p2;
+  } 
 }
 
 .player-three-label {
@@ -108,6 +115,9 @@ label {
 
 .player-three-intake {
   border: 2px solid $player-three-color;
+  &:hover{
+    box-shadow: $hover-glow-p3;
+  } 
 }
 
 .start-game-btn {
@@ -121,6 +131,14 @@ label {
   margin: 15px 13%; 
   width: 75%;
   z-index: 1;
+  box-shadow: 0px 6px 0px #12442c;
+  border-radius: 5px;
+  letter-spacing: 3px;
+  &:hover {
+    color: greenyellow;
+    text-shadow: 1px 1px 2px greenyellow, 0 0 2em whitesmoke, 0 0 0.4em limegreen;
+    box-shadow: 0px 6px 0px #12442c, 0 0 2em whitesmoke, 0 0 2em limegreen;
+  }
 }
 
 .round-one {
@@ -195,6 +213,12 @@ label {
   z-index: 1;
 }
 
+.daily-double {
+  @extend .clue-info;
+  padding: 9%;
+  max-height: 82%;
+}
+
 .clue-pop {
   animation: clue-pop 1s;
 }
@@ -215,10 +239,15 @@ label {
 
 .user-input {
   margin: 3% 0 3% 0;
+  border-radius: 5px;
+  border: 2px solid #2F0F52;
+  box-shadow: $hover-glow-guess;
+  
 }
 
 .user-guess-btn {
-  border: 2px solid lime;
+  @extend .start-game-btn;
+  width: 50%;
 }
 
 .player-container {
@@ -244,20 +273,20 @@ label {
 
 .wager-input {
   float: left;
+  box-shadow: $daily-double-glow;
+  border-radius: 5px;
 }
 
 .wager-btn {
   border: 2px solid lime;
   float: right;
+  @extend .start-game-btn;
+  background: #4D3977;
 }
 
 .user-guess-daily-double-btn {
-  background-color: white;
-  font-size: 1em;
-  height: 50px;
-  letter-spacing: 3px;
-  padding: 20px;
-  width: 100%;
+  @extend .start-game-btn;
+  width: 50%
 }
 
 .podium {
@@ -330,23 +359,41 @@ label {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .round-3-style {
   padding-bottom: 20px;
 }
 
-.p1-wager-input,
-.p2-wager-input,
-.p3-wager-input {
+.p1-wager-input {
   text-align: center;
-  height: 25px;
+  height: 40px;
   width: 50%;
+  font-size: 1em;
+  border-radius: 5px;
+    &:hover {
+      box-shadow: $hover-glow-p1;
+    }
+}
+.p2-wager-input {
+  @extend .p1-wager-input;
+    &:hover {
+      box-shadow: $hover-glow-p2;
+    }
+}
+.p3-wager-input {
+  @extend .p1-wager-input;
+    &:hover {
+      box-shadow: $hover-glow-p3;
+    }
 }
 
 .category-third-round {
   color: white;
-  z-index: 10;
+  // z-index: 10;
+  font-size: 1.5em;
 }
 
 .player-guess-container {
@@ -358,19 +405,21 @@ label {
 }
 
 .last-page-name{
-  font-size: 1.75rem;
+  font-size: 1.5em;
 }
 
 .last-page-input {
   text-align: center;
-  width: 50%;
-  height: 30px;
-  margin-left: 25%;
+  height: 60px;
   margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  box-shadow: $daily-double-glow;
 }
 
 .last-page-question {
-  font-size: 1.5rem; 
+  font-size: 1.5em; 
+  padding: 5%;
 }
 
 .round-title {
@@ -385,22 +434,22 @@ label {
   border-radius: 30px;
   filter: drop-shadow(3px 6px 6px #e82d7f);
   font-weight: 900;
-  height: 15%;
-  position: absolute;
-  left: 101%;
-  bottom: 249%;
+  height: 4%;
   width: 12%;
+  float: right;
+  margin: 12px 16px 0 0;
 }
 
 h3 {
   font-size: 3em;
   font-weight: 900;
   margin: 0px auto 35px;
-  text-shadow: 1px 1px 2px $player-one-color, 0 0 1em $player-two-color, 0 0 0.2em $player-three-color;
+  text-shadow: $daily-double-glow;
 }
 
 .player-guess-container {
   color: white;
+  margin: 40px auto;
 }
 
 .winner {
@@ -409,3 +458,24 @@ h3 {
   font-size: 5em;
 }
 
+.round-3-info {
+  display: flex;
+  justify-content: space-between;
+  height: 3%;
+  align-items: center;
+    .reset-game-btn {
+      height: 40px;
+    }
+}
+
+.submit-wagers {
+  @extend .wager-btn;
+  float: none;
+  width: 42%;
+  margin: auto;
+}
+
+.player-guess-button {
+  @extend .start-game-btn;
+  height: 50px;
+}
