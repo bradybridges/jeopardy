@@ -41,12 +41,11 @@ npm install
 1. To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see the page.
 
 ## Screenshots
-![alt text]()
-![alt text]()
-![alt text]()
-![alt text]()
-![alt text]()
-![alt text]()
+![Splash Page](https://github.com/bradybridges/jeopardy/blob/master/src/images/splash.png)
+![Round1](https://github.com/bradybridges/jeopardy/blob/master/src/images/round1.png)
+![Round3](https://github.com/bradybridges/jeopardy/blob/master/src/images/round3.png)
+![Winner](https://github.com/bradybridges/jeopardy/blob/master/src/images/winner.png)
+
 
 
 
