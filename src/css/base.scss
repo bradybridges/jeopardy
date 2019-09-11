@@ -142,7 +142,7 @@ label {
 }
 
 .round-one {
-  background-image: url("./images/round-one.jpg");
+  background-image: url("../images/round-one.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -216,7 +216,7 @@ label {
 .daily-double {
   @extend .clue-info;
   padding: 9%;
-  max-height: 96%;
+  max-height: 82%;
 }
 
 .clue-pop {
@@ -343,14 +343,14 @@ label {
 }
 
 .round-two {
-  background-image: url("./images/round-two.jpg");
+  background-image: url("../images/round-two.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 
 .round-three {
-  background-image: url("./images/game-fin.jpg");
+  background-image: url("../images/game-fin.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -393,7 +393,6 @@ label {
 .category-third-round {
   color: white;
   font-size: 1.5em;
-  z-index: 10;
 }
 
 .player-guess-container {
@@ -456,7 +455,6 @@ h3 {
   color: white;
   font-weight: 900;
   font-size: 5em;
-  margin-top: 5%;
 }
 
 .round-3-info {
@@ -479,12 +477,4 @@ h3 {
 .player-guess-button {
   @extend .start-game-btn;
   height: 50px;
-}
-
-.current-player-name {
-  font-weight: 500;
-  font-size:1.5em;
-  color: whitesmoke;
-  margin: 0% 18%;
-  display: inline-block;
 }
