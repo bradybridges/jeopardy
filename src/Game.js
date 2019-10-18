@@ -5,6 +5,7 @@ import Player from '../src/Player';
 class Game {
   constructor(data, players) {
     this.data = data;
+    console.log(this.data)
     this.playersList = players;
     this.generatedPlayers;
     this.allCategories = this.data.categories;
