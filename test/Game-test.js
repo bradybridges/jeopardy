@@ -65,18 +65,17 @@ describe('Game', () => {
 
   describe('generateClues', () => {
     it('should generate clues based on category and round', () => {
-      // console.log('Game clues: ', game.clues);
       expect(game.clues.length).to.equal(16);
     });
   });
 
   describe('nextRoundHandler', () => {
     it('round counter should increment with each new round', () => {
-    expect(game.roundCounter).to.equal(1);
-    game.nextRoundHandler();
-    expect(game.roundCounter).to.equal(2);
-    game.nextRoundHandler();
-    expect(game.roundCounter).to.equal(3);
+      expect(game.roundCounter).to.equal(1);
+      game.nextRoundHandler();
+      expect(game.roundCounter).to.equal(2);
+      game.nextRoundHandler();
+      expect(game.roundCounter).to.equal(3);
     });
   });
 
